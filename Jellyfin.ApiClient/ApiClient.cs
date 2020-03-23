@@ -43,45 +43,23 @@ namespace Jellyfin.ApiClient
         public event EventHandler<GenericEventArgs<RemoteLogoutReason>> RemoteLoggedOut;
         public event EventHandler<GenericEventArgs<AuthenticationResult>> Authenticated;
 
-        /// <summary>
-        /// Gets the HTTP client.
-        /// </summary>
-        /// <value>The HTTP client.</value>
         protected IAsyncHttpClient HttpClient { get; private set; }
+        internal ServerInfo ServerInfo { get; set; }
+        private INetworkConnection NetworkConnection { get; set; }
+        private readonly SemaphoreSlim _validateConnectionSemaphore = new SemaphoreSlim(1, 1);
+        private DateTime _lastConnectionValidationTime = DateTime.MinValue;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ApiClient" /> class.
-        /// </summary>
-        /// <param name="logger">The logger.</param>
-        /// <param name="serverAddress">The server address.</param>
-        /// <param name="accessToken">The access token.</param>
-        public ApiClient(ILogger logger,
-            Uri serverAddress,
-            string accessToken)
+        public ApiClient(ILogger logger, Uri serverAddress, string accessToken)
             : base(logger, new NewtonsoftJsonSerializer(), serverAddress, accessToken)
         {
             CreateHttpClient(logger);
-
             ResetHttpHeaders();
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ApiClient" /> class.
-        /// </summary>
-        /// <param name="logger">The logger.</param>
-        /// <param name="serverAddress">The server address.</param>
-        /// <param name="clientName">Name of the client.</param>
-        /// <param name="device">The device.</param>
-        /// <param name="applicationVersion">The application version.</param>
-        public ApiClient(ILogger logger,
-            Uri serverAddress,
-            string clientName,
-            IDevice device,
-            string applicationVersion)
+        public ApiClient(ILogger logger, Uri serverAddress, string clientName, IDevice device, string applicationVersion)
             : base(logger, new NewtonsoftJsonSerializer(), serverAddress, clientName, device, applicationVersion)
         {
             CreateHttpClient(logger);
-
             ResetHttpHeaders();
         }
 
@@ -91,23 +69,13 @@ namespace Jellyfin.ApiClient
             HttpClient.HttpResponseReceived += HttpClient_HttpResponseReceived;
         }
 
-        void HttpClient_HttpResponseReceived(object sender, HttpWebResponse e)
+        private void HttpClient_HttpResponseReceived(object sender, HttpWebResponse e)
         {
             if (e.StatusCode == HttpStatusCode.Unauthorized)
             {
                 RemoteLoggedOut?.Invoke(this, new GenericEventArgs<RemoteLogoutReason>());
             }
-        }
-
-        internal ServerInfo ServerInfo { get; set; }
-        private INetworkConnection NetworkConnection { get; set; }
-
-        public void EnableAutomaticNetworking(ServerInfo info, INetworkConnection networkConnection)
-        {
-            NetworkConnection = networkConnection;
-            ServerInfo = info;
-            ServerAddress = info.Address;
-        }
+        }           
 
         private async Task<Stream> SendAsync(HttpRequest request, bool enableFailover = true)
         {
@@ -149,10 +117,6 @@ namespace Jellyfin.ApiClient
 
             return await HttpClient.SendAsync(request).ConfigureAwait(false);
         }
-
-        private readonly SemaphoreSlim _validateConnectionSemaphore = new SemaphoreSlim(1, 1);
-
-        private DateTime _lastConnectionValidationTime = DateTime.MinValue;
 
         private async Task ValidateConnection(DateTime originalRequestTime, CancellationToken cancellationToken)
         {
@@ -262,6 +226,13 @@ namespace Jellyfin.ApiClient
             return url;
         }
 
+        public void EnableAutomaticNetworking(ServerInfo info, INetworkConnection networkConnection)
+        {
+            NetworkConnection = networkConnection;
+            ServerInfo = info;
+            ServerAddress = info.Address;
+        }
+
         public Task<Stream> GetStream(Uri url, CancellationToken cancellationToken = default)
         {
             return SendAsync(new HttpRequest
@@ -272,7 +243,6 @@ namespace Jellyfin.ApiClient
                 Url = url
             });
         }
-
 
         public Task<HttpWebResponse> GetResponse(Uri url, CancellationToken cancellationToken = default)
         {
