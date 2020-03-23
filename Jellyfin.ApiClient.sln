@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29905.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jellyfin.ApiClient", "Jellyfin.ApiClient\Jellyfin.ApiClient.csproj", "{D06EB127-7A73-4848-AC93-8F56C15C6496}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D06EB127-7A73-4848-AC93-8F56C15C6496}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D06EB127-7A73-4848-AC93-8F56C15C6496}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D06EB127-7A73-4848-AC93-8F56C15C6496}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D06EB127-7A73-4848-AC93-8F56C15C6496}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3B6AEE46-C88D-448D-9332-8C6218BC0233}
+	EndGlobalSection
+EndGlobal

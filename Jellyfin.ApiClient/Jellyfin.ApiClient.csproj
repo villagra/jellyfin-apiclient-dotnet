@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyVersion>1.1.1.0</AssemblyVersion>
+    <FileVersion>1.1.1.0</FileVersion>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>Jellyfin.ApiClient</PackageId>
+    <Version>10.4.3</Version>
+    <Authors>Jellyfin</Authors>
+    <Company>Jellyfin</Company>
+    <Description>Api libraries for connecting to Jellyfin Server.</Description>
+    <PackageProjectUrl>https://github.com/Jellyfin/jellyfin-apiclient-csharp</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Jellyfin/jellyfin-apiclient-csharp</RepositoryUrl>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PackageIcon></PackageIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="WebSocket4Net" Version="0.15.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Jellyfin.Common">
+      <Version>10.4.3</Version>
+    </PackageReference>
+    <PackageReference Include="Jellyfin.Controller">
+      <Version>10.4.3</Version>
+    </PackageReference>
+    <PackageReference Include="Jellyfin.Model">
+      <Version>10.4.3</Version>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>
