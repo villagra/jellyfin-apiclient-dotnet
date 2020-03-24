@@ -5,7 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Web;
 
-namespace Jellyfin.ApiClient
+namespace Jellyfin.ApiClient.Extensions
 {
     /// <summary>
     /// Extensions for NameValueCollection

@@ -1,3 +1,5 @@
+using Jellyfin.ApiClient.Model;
+using MediaBrowser.Model.Session;
 using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -20,8 +22,6 @@ namespace Jellyfin.ApiClient.Tests
             };
 
             ApiClient client = new ApiClient(NullLogger.Instance, new Uri("http://192.168.1.230:32770"), "test", device, "5.0.1");
-            client.JsonSerializer = new NewtonsoftJsonSerializer();
-
             var result = await client.AuthenticateUserAsync("", "");
         }
     }

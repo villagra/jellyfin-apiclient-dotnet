@@ -2,6 +2,7 @@
 using Jellyfin.ApiClient.Model.Dto;
 using Jellyfin.ApiClient.Model.Querying;
 using Jellyfin.ApiClient.Net;
+using Jellyfin.ApiClient.Extensions;
 using MediaBrowser.Model.Dto;
 using MediaBrowser.Model.Entities;
 using MediaBrowser.Model.Querying;

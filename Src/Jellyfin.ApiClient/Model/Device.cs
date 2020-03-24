@@ -1,6 +1,4 @@
-﻿using Jellyfin.ApiClient.Model;
-
-namespace Jellyfin.ApiClient
+﻿namespace Jellyfin.ApiClient.Model
 {
     public class Device : IDevice
     {
