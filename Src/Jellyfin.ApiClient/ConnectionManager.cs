@@ -1,6 +1,5 @@
 ﻿using Jellyfin.ApiClient.Model;
 using Jellyfin.ApiClient.Net;
-using MediaBrowser.Controller.Authentication;
 using MediaBrowser.Model.ApiClient;
 using MediaBrowser.Model.Dto;
 using MediaBrowser.Model.Events;

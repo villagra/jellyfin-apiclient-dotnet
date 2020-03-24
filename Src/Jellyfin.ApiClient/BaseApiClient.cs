@@ -21,6 +21,10 @@ namespace Jellyfin.ApiClient
     /// </summary>
     public abstract class BaseApiClient : IDisposable
     {
+
+        protected readonly HttpHeaders HttpHeaders = new HttpHeaders();
+
+
         /// <summary>
         /// Gets the logger.
         /// </summary>
@@ -40,70 +44,11 @@ namespace Jellyfin.ApiClient
         /// </summary>
         public int? ImageQuality { get; set; }
 
-        protected BaseApiClient(ILogger logger, IJsonSerializer jsonSerializer, Uri serverAddress, string clientName, IDevice device, string applicationVersion)
-        {
-            if (serverAddress == null)
-            {
-                throw new ArgumentNullException(nameof(serverAddress));
-            }
-
-            if (jsonSerializer == null)
-            {
-                throw new ArgumentNullException(nameof(jsonSerializer));
-            }
-
-            if (logger == null)
-            {
-                throw new ArgumentNullException(nameof(logger));
-            }
-
-            ClientName = clientName;
-            Device = device;
-            ApplicationVersion = applicationVersion;
-            ServerAddress = serverAddress;
-        }
-
-        protected BaseApiClient(ILogger logger, IJsonSerializer jsonSerializer, Uri serverAddress, string accessToken)
-        {
-            if (serverAddress == null)
-            {
-                throw new ArgumentNullException("serverAddress");
-            }
-
-            if (jsonSerializer == null)
-            {
-                throw new ArgumentNullException("jsonSerializer");
-            }
-
-            if (logger == null)
-            {
-                throw new ArgumentNullException("logger");
-            }
-
-            AccessToken = accessToken;
-            ServerAddress = serverAddress;
-        }
-
         /// <summary>
         /// Gets the name of the server host.
         /// </summary>
         /// <value>The name of the server host.</value>
         public Uri ServerAddress { get; protected set; }
-
-        /// <summary>
-        /// Changes the server location.
-        /// </summary>
-        /// <param name="address">The address.</param>
-        /// <param name="keepExistingAuth"></param>
-        public void ChangeServerLocation(Uri address, bool keepExistingAuth = false)
-        {
-            ServerAddress = address;
-
-            if (!keepExistingAuth)
-            {
-                SetAuthenticationInfo(null, Guid.Empty);
-            }
-        }
 
         /// <summary>
         /// Gets or sets the type of the client.
@@ -119,7 +64,6 @@ namespace Jellyfin.ApiClient
         {
             get { return Device?.DeviceName; }
         }
-
 
         /// <summary>
         /// Gets or sets the application version.
@@ -191,6 +135,42 @@ namespace Jellyfin.ApiClient
 
                 return header;
             }
+        }        
+
+        protected BaseApiClient(ILogger logger, IJsonSerializer jsonSerializer, Uri serverAddress, string clientName, IDevice device, string applicationVersion)
+        {
+            Logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            JsonSerializer = jsonSerializer ?? throw new ArgumentNullException(nameof(jsonSerializer));
+            ServerAddress = serverAddress ?? throw new ArgumentNullException(nameof(serverAddress));
+
+            ClientName = clientName;
+            Device = device;
+            ApplicationVersion = applicationVersion;
+        }
+
+        protected BaseApiClient(ILogger logger, IJsonSerializer jsonSerializer, Uri serverAddress, string accessToken)
+        {
+            Logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            JsonSerializer = jsonSerializer ?? throw new ArgumentNullException(nameof(jsonSerializer));
+            ServerAddress = serverAddress ?? throw new ArgumentNullException(nameof(serverAddress));
+
+            AccessToken = accessToken;
+        }
+
+
+        /// <summary>
+        /// Changes the server location.
+        /// </summary>
+        /// <param name="address">The address.</param>
+        /// <param name="keepExistingAuth"></param>
+        public void ChangeServerLocation(Uri address, bool keepExistingAuth = false)
+        {
+            ServerAddress = address;
+
+            if (!keepExistingAuth)
+            {
+                SetAuthenticationInfo(null, Guid.Empty);
+            }
         }
 
         /// <summary>
@@ -241,8 +221,7 @@ namespace Jellyfin.ApiClient
                 SetAuthorizationHttpRequestHeader(AuthorizationScheme, authValue);
             }
         }
-
-        protected readonly HttpHeaders HttpHeaders = new HttpHeaders();
+        
         private void SetAuthorizationHttpRequestHeader(string scheme, string parameter)
         {
             HttpHeaders.AuthorizationScheme = scheme;
@@ -963,10 +942,12 @@ namespace Jellyfin.ApiClient
         {
             return item.ImageTags != null && item.ImageTags.ContainsKey(ImageType.Art);
         }
+
         public bool HasLogo(BaseItemDto item)
         {
             return item.ImageTags != null && item.ImageTags.ContainsKey(ImageType.Logo);
         }
+
         public bool HasThumb(BaseItemDto item)
         {
             return item.ImageTags != null && item.ImageTags.ContainsKey(ImageType.Thumb);

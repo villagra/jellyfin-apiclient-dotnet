@@ -3,7 +3,6 @@ using Jellyfin.ApiClient.Model.Dto;
 using Jellyfin.ApiClient.Model.Notifications;
 using Jellyfin.ApiClient.Model.Querying;
 using Jellyfin.ApiClient.Net;
-using MediaBrowser.Controller.Authentication;
 using MediaBrowser.Model.Channels;
 using MediaBrowser.Model.Configuration;
 using MediaBrowser.Model.Devices;
