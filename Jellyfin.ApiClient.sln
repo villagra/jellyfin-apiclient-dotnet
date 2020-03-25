@@ -3,11 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29905.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jellyfin.ApiClient", "Src\Jellyfin.ApiClient\Jellyfin.ApiClient.csproj", "{2855C8CA-0C78-4F47-807A-15D6D3B4ED56}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{D1293503-4B72-4300-80F9-F584515946C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jellyfin.ApiClient.Tests", "Tests\Jellyfin.ApiClient.Tests\Jellyfin.ApiClient.Tests.csproj", "{C303DE84-A2DC-485C-902D-EBE84A76EFA1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jellyfin.ApiClient.Tests", "Tests\Jellyfin.ApiClient.Tests\Jellyfin.ApiClient.Tests.csproj", "{C303DE84-A2DC-485C-902D-EBE84A76EFA1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +13,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2855C8CA-0C78-4F47-807A-15D6D3B4ED56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2855C8CA-0C78-4F47-807A-15D6D3B4ED56}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2855C8CA-0C78-4F47-807A-15D6D3B4ED56}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2855C8CA-0C78-4F47-807A-15D6D3B4ED56}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C303DE84-A2DC-485C-902D-EBE84A76EFA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C303DE84-A2DC-485C-902D-EBE84A76EFA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C303DE84-A2DC-485C-902D-EBE84A76EFA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
