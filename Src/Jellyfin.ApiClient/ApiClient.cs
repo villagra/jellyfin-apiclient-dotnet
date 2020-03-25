@@ -32,6 +32,7 @@ using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
+using System.Diagnostics;
 
 namespace Jellyfin.ApiClient
 {
@@ -68,6 +69,35 @@ namespace Jellyfin.ApiClient
             HttpClient = AsyncHttpClientFactory.Create(logger);
             HttpClient.HttpResponseReceived += HttpClient_HttpResponseReceived;
         }
+
+        #region validated 
+
+        /// <summary>
+        /// Queries for items
+        /// </summary>
+        /// <param name="query">The query.</param>
+        /// <returns>Task{ItemsResult}.</returns>
+        /// <exception cref="System.ArgumentNullException">query</exception>
+        public async Task<QueryResult<BaseItemDto>> GetItemsAsync(ItemQuery query, CancellationToken cancellationToken = default)
+        {
+            if (query == null)
+            {
+                throw new ArgumentNullException("query");
+            }
+
+            var url = GetItemListUrl(query);
+
+            using (var stream = await GetSerializedStreamAsync(url, cancellationToken).ConfigureAwait(false))
+            {
+                using (var reader = new StreamReader(stream))
+                {
+                    Debug.WriteLine(reader.ReadToEnd());
+                }
+                return DeserializeFromStream<QueryResult<BaseItemDto>>(stream);
+            }
+        }
+
+        #endregion
 
         private void HttpClient_HttpResponseReceived(object sender, HttpWebResponse e)
         {
@@ -416,27 +446,6 @@ namespace Jellyfin.ApiClient
             using (var stream = await GetSerializedStreamAsync(url).ConfigureAwait(false))
             {
                 return DeserializeFromStream<SessionInfoDto[]>(stream);
-            }
-        }
-
-        /// <summary>
-        /// Queries for items
-        /// </summary>
-        /// <param name="query">The query.</param>
-        /// <returns>Task{ItemsResult}.</returns>
-        /// <exception cref="System.ArgumentNullException">query</exception>
-        public async Task<QueryResult<BaseItemDto>> GetItemsAsync(ItemQuery query, CancellationToken cancellationToken = default)
-        {
-            if (query == null)
-            {
-                throw new ArgumentNullException("query");
-            }
-
-            var url = GetItemListUrl(query);
-
-            using (var stream = await GetSerializedStreamAsync(url, cancellationToken).ConfigureAwait(false))
-            {
-                return DeserializeFromStream<QueryResult<BaseItemDto>>(stream);
             }
         }
 

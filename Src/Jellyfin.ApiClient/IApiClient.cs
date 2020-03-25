@@ -1,4 +1,5 @@
-﻿using Jellyfin.ApiClient.Model.Dto;
+﻿using Jellyfin.ApiClient.Model;
+using Jellyfin.ApiClient.Model.Dto;
 using Jellyfin.ApiClient.Model.Notifications;
 using Jellyfin.ApiClient.Model.Querying;
 using MediaBrowser.Model.Channels;
@@ -27,7 +28,7 @@ using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Jellyfin.ApiClient.Model
+namespace Jellyfin.ApiClient
 {
     /// <summary>
     /// Interface IApiClient
