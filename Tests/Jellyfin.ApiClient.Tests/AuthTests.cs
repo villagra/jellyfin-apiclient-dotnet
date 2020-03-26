@@ -6,6 +6,8 @@
 using Jellyfin.ApiClient.Auth;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Net.Http;
+using System.Security.Authentication;
 using System.Threading.Tasks;
 
 namespace Jellyfin.ApiClient.Tests
@@ -14,46 +16,26 @@ namespace Jellyfin.ApiClient.Tests
     public class AuthTests
     {
         [TestMethod]
-        public async Task AuthenticateErrorUserAsyncTest()
+        public async Task InvalidServerTest()
         {
-            //Assert.ThrowsException<InvalidOperationException>(() => sut.ReadCurrentTemperature());
+            JellyfinClient client = new JellyfinClient(new Uri("http://1.1.1.1:1"), new UserAuthentication("unitests", "pc-dev", "pc-dev-id", "0.0.1"));
+            await Assert.ThrowsExceptionAsync<HttpRequestException>(async () => await client.AuthenticateUserAsync("admin", "aaaaaaaaaa"));
+        }
+
+        [TestMethod]
+        public async Task AuthenticateInvalidCredentialsTest()
+        {
+            JellyfinClient client = new JellyfinClient(new Uri("http://192.168.1.230:32770"), new UserAuthentication("unitests", "pc-dev", "pc-dev-id", "0.0.1"));                                    
+            await Assert.ThrowsExceptionAsync<AuthenticationException>(async () => await client.AuthenticateUserAsync("admin", "aaaaaaaaaa"));
         }
 
         [TestMethod]
         public async Task AuthenticateUserAsyncTest()
         {
-            JellyfinClient client = new JellyfinClient(new Uri("http://192.168.1.230:32770"), new UserAuthentication("unitests", "pc-dev", "pc-dev-id", "0.0.1"));
-            //var result = await client.AuthenticateUserAsync("admin", "4Y9YyXUqb28wJQ");
-            var result = await client.AuthenticateUserAsync("admin", "aaaaaaaaaa");
-
-            /*
-            var device = new Device
-            {
-                DeviceName = "My Device Name",
-                DeviceId = "My Device Id"
-            };
-            
-            ApiClient client = new ApiClient(NullLogger.Instance, new Uri("https://demo.jellyfin.org/stable/"), "test", device, "5.0.1");            
-
-            var result = await client.AuthenticateUserAsync("demo", String.Empty);
-            var views = await client.GetUserViews(result.SessionInfo.UserId);
-
-            // Get the ten most recently added items for the current user
-            var items = await client.GetItemsAsync(new ItemQuery
-            {
-                UserId = client.CurrentUserId,
-                SortBy = new[] { ItemSortBy.DateCreated },
-                SortOrder = SortOrder.Descending,
-
-                // Get media only, don't return folder items
-                Filters = new[] { ItemFilter.IsNotFolder },
-
-                Limit = 10,
-
-                // Search recursively through the user's library
-                Recursive = true
-            });*/
-
+            JellyfinClient client = new JellyfinClient(new Uri("http://192.168.1.230:32770"), new UserAuthentication("unitests", "pc-dev", "pc-dev-id", "0.0.1"));            
+            var result = await client.AuthenticateUserAsync("admin", "asdasdasd");
+            Assert.IsNotNull(result);
+            Assert.IsNotNull(result.User);
         }
     }
 }

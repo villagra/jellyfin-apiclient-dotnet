@@ -1,6 +1,7 @@
 ﻿using Jellyfin.ApiClient.Auth;
 using Jellyfin.ApiClient.Exceptions;
 using Jellyfin.ApiClient.Serialization;
+using MediaBrowser.Model.Dto;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
@@ -17,12 +18,14 @@ namespace Jellyfin.ApiClient
 {
     public abstract class JellyfinBaseClient
     {
-        private readonly IAuthenticationMethod Authentication;
         private readonly JsonSerializer _serializer = new JsonSerializer();
-
+        
+        protected IAuthenticationMethod Authentication { get; private set; }       
         protected ILogger Logger { get; private set; }
         protected HttpClient Client { get; private set; }
         protected Uri ServerAddress { get; private set; }
+        protected UserDto CurrentUser { get; private set; }
+        protected String AccessToken { get; private set; }
 
         public JellyfinBaseClient(Uri serverAddress, IAuthenticationMethod authentication, ILogger logger)
         {
@@ -35,18 +38,43 @@ namespace Jellyfin.ApiClient
 
         protected void CreateClient(Uri server)
         {            
-            var handler = new JellyfinHttpClientHandler();
+            var handler = new JellyfinHttpClientHandler(Logger);
             Client = new HttpClient(handler)
             {
                 BaseAddress = server
             };
 
-            if (Authentication is UserAuthentication ua)
-            {
-                Client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("MediaBrowser", $"Client=\"{ua.ClientName}\", DeviceId=\"{ua.DeviceId}\", Device=\"{ua.DeviceName}\", Version=\"{ua.ApplicationVersion}\"");
-            }
-
+            UpdateHeaders();
             Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        }        
+
+        protected void SetAuthenticationInfo(UserDto currentUser, String accessToken)
+        {
+            this.CurrentUser = currentUser;
+            this.AccessToken = accessToken;
+            UpdateHeaders();
+        }
+
+        private void UpdateHeaders()
+        {
+            Client.DefaultRequestHeaders.Remove("X-MediaBrowser-Token");
+
+            if (Authentication is UserAuthentication ua)
+            {                
+                if (!String.IsNullOrWhiteSpace(AccessToken))
+                {
+                    Client.DefaultRequestHeaders.Add("X-MediaBrowser-Token", AccessToken);
+                }
+
+                if (CurrentUser != null)
+                {
+                    Client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("MediaBrowser", $"UserId=\"{CurrentUser.Id.ToString()}\", Client=\"{ua.ClientName}\", DeviceId=\"{ua.DeviceId}\", Device=\"{ua.DeviceName}\", Version=\"{ua.ApplicationVersion}\"");
+                }
+                else
+                {
+                    Client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("MediaBrowser", $"Client=\"{ua.ClientName}\", DeviceId=\"{ua.DeviceId}\", Device=\"{ua.DeviceName}\", Version=\"{ua.ApplicationVersion}\"");
+                }
+            }
         }
 
         protected async Task<T> DoPost<T>(String path, Object data) where T : class

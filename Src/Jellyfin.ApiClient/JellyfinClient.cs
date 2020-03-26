@@ -1,4 +1,5 @@
 ﻿using Jellyfin.ApiClient.Auth;
+using Jellyfin.ApiClient.Exceptions;
 using Jellyfin.ApiClient.Model;
 using Jellyfin.ApiClient.Serialization;
 using Microsoft.Extensions.Logging;
@@ -35,10 +36,26 @@ namespace Jellyfin.ApiClient
                 throw new ArgumentNullException(nameof(username));
             }
 
-            AuthenticationResult result = await DoPost<AuthenticationResult>("Users/AuthenticateByName", new AuthenticationRequest(username, password));          
+            AuthenticationResult result;
 
-            //SetAuthenticationInfo(result.AccessToken, result.User.Id);
-            //Authenticated?.Invoke(this, new GenericEventArgs<AuthenticationResult>(result));
+            try
+            {
+                result = await DoPost<AuthenticationResult>("Users/AuthenticateByName", new AuthenticationRequest(username, password));
+            }
+            catch (RequestFailedException ex)
+            {
+                if (ex.Status == System.Net.HttpStatusCode.InternalServerError)
+                {
+                    throw new AuthenticationException();
+                }
+
+                throw;
+            }
+
+            if (result != null)
+            {
+                SetAuthenticationInfo(result.User, result.AccessToken);
+            }
 
             return result;         
         }
