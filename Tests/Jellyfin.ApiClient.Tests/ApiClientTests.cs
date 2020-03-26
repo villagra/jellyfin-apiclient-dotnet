@@ -23,7 +23,7 @@ namespace Jellyfin.ApiClient.Tests
                 DeviceName = "My Device Name",
                 DeviceId = "My Device Id"
             };
-
+            
             ApiClient client = new ApiClient(NullLogger.Instance, new Uri("https://demo.jellyfin.org/stable/"), "test", device, "5.0.1");            
 
             var result = await client.AuthenticateUserAsync("demo", String.Empty);
