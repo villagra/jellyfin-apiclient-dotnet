@@ -3,6 +3,7 @@
 //using MediaBrowser.Model.Querying;
 //using MediaBrowser.Model.Session;
 //using Microsoft.Extensions.Logging.Abstractions;
+using Jellyfin.ApiClient.Auth;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Threading.Tasks;
@@ -10,12 +11,20 @@ using System.Threading.Tasks;
 namespace Jellyfin.ApiClient.Tests
 {
     [TestClass]
-    public class ApiClientTests
+    public class AuthTests
     {
+        [TestMethod]
+        public async Task AuthenticateErrorUserAsyncTest()
+        {
+            //Assert.ThrowsException<InvalidOperationException>(() => sut.ReadCurrentTemperature());
+        }
+
         [TestMethod]
         public async Task AuthenticateUserAsyncTest()
         {
-            Console.WriteLine("Hello World!");
+            JellyfinClient client = new JellyfinClient(new Uri("http://192.168.1.230:32770"), new UserAuthentication("unitests", "pc-dev", "pc-dev-id", "0.0.1"));
+            //var result = await client.AuthenticateUserAsync("admin", "4Y9YyXUqb28wJQ");
+            var result = await client.AuthenticateUserAsync("admin", "aaaaaaaaaa");
 
             /*
             var device = new Device

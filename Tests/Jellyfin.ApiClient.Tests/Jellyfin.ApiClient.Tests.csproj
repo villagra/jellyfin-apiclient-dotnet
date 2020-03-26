@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Auth\" />
+    <ProjectReference Include="..\..\Src\Jellyfin.ApiClient\Jellyfin.ApiClient.csproj" />
   </ItemGroup>
 
 </Project>
