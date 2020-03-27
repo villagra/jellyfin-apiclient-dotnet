@@ -1,4 +1,5 @@
-﻿using Jellyfin.ApiClient.Auth;
+﻿using Flurl;
+using Jellyfin.ApiClient.Auth;
 using Jellyfin.ApiClient.Exceptions;
 using Jellyfin.ApiClient.Serialization;
 using MediaBrowser.Model.Dto;
@@ -19,6 +20,8 @@ namespace Jellyfin.ApiClient
     public abstract class JellyfinBaseClient
     {
         private readonly JsonSerializer _serializer = new JsonSerializer();
+
+        private string _basePath = String.Empty;
         
         protected IAuthenticationMethod Authentication { get; private set; }       
         protected ILogger Logger { get; private set; }
@@ -26,6 +29,7 @@ namespace Jellyfin.ApiClient
         protected Uri ServerAddress { get; private set; }
         protected UserDto CurrentUser { get; private set; }
         protected String AccessToken { get; private set; }
+
 
         public JellyfinBaseClient(Uri serverAddress, IAuthenticationMethod authentication, ILogger logger)
         {
@@ -37,11 +41,13 @@ namespace Jellyfin.ApiClient
         }
 
         protected void CreateClient(Uri server)
-        {            
+        {
+            _basePath = server.AbsolutePath;
+
             var handler = new JellyfinHttpClientHandler(Logger);
             Client = new HttpClient(handler)
             {
-                BaseAddress = server
+                BaseAddress = server                
             };
 
             UpdateHeaders();
@@ -79,6 +85,8 @@ namespace Jellyfin.ApiClient
 
         protected async Task<T> DoPost<T>(String path, Object data) where T : class
         {
+            path = Url.Combine(_basePath, path);
+
             HttpResponseMessage response = await Client.PostAsync(path, new JsonContent(data)).ConfigureAwait(false);
 
             if (response.IsSuccessStatusCode)
@@ -97,6 +105,8 @@ namespace Jellyfin.ApiClient
 
         protected async Task<T> DoGet<T>(String path) where T : class
         {
+            path = Url.Combine(_basePath, path);
+
             HttpResponseMessage response = await Client.GetAsync(path).ConfigureAwait(false);
 
             if (response.IsSuccessStatusCode)
