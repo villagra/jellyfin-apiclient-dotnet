@@ -9,10 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jellyfin.ApiClient.Tests", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jellyfin.ApiClient.Legacy", "Src\Jellyfin.ApiClient.Legacy\Jellyfin.ApiClient.Legacy.csproj", "{487D893D-379F-46F3-B89C-1F9C2EE6E3B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jellyfin.ApiClient", "Src\Jellyfin.ApiClient\Jellyfin.ApiClient.csproj", "{BCDB482A-5415-4829-8090-C8C50E893042}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jellyfin.ApiClient", "Src\Jellyfin.ApiClient\Jellyfin.ApiClient.csproj", "{BCDB482A-5415-4829-8090-C8C50E893042}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{0256D1A4-EA30-431C-8131-56DD3BE59C66}"
 	ProjectSection(SolutionItems) = preProject
+		LICENSE.md = LICENSE.md
 		README.md = README.md
 	EndProjectSection
 EndProject
