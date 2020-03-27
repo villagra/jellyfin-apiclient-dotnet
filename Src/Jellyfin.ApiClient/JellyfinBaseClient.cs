@@ -94,5 +94,23 @@ namespace Jellyfin.ApiClient
             var stringcontent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             throw new RequestFailedException(response.StatusCode, stringcontent);
         }
+
+        protected async Task<T> DoGet<T>(String path) where T : class
+        {
+            HttpResponseMessage response = await Client.GetAsync(path).ConfigureAwait(false);
+
+            if (response.IsSuccessStatusCode)
+            {
+                using (var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
+                using (var reader = new StreamReader(stream))
+                using (var json = new JsonTextReader(reader))
+                {
+                    return _serializer.Deserialize<T>(json);
+                }
+            }
+
+            var stringcontent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+            throw new RequestFailedException(response.StatusCode, stringcontent);
+        }
     }
 }

@@ -9,6 +9,14 @@ namespace Jellyfin.ApiClient
     public interface IApiClient
     {
         Task<AuthenticationResult> AuthenticateUserAsync(string username, string password);
+
+        /// <summary>
+        /// Gets the user views.
+        /// </summary>
+        /// <param name="userId">The user identifier.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>Task&lt;ItemsResult&gt;.</returns>
+        Task<QueryResult<BaseItem>> GetUserViews(string userId);
     }
 }
 
@@ -290,14 +298,6 @@ namespace Jellyfin.ApiClient
         /// <returns>Task{ItemsResult}.</returns>
         /// <exception cref="ArgumentNullException">query</exception>
         Task<QueryResult<BaseItemDto>> GetItemsAsync(ItemQuery query, CancellationToken cancellationToken = default);
-
-        /// <summary>
-        /// Gets the user views.
-        /// </summary>
-        /// <param name="userId">The user identifier.</param>
-        /// <param name="cancellationToken">The cancellation token.</param>
-        /// <returns>Task&lt;ItemsResult&gt;.</returns>
-        Task<QueryResult<BaseItemDto>> GetUserViews(string userId, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Gets the instant mix from item asynchronous.

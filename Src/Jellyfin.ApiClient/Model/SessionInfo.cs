@@ -1,6 +1,7 @@
 ﻿using MediaBrowser.Model.Session;
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace Jellyfin.ApiClient.Model

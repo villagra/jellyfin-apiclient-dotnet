@@ -33,7 +33,7 @@ namespace Jellyfin.ApiClient.Tests
         public async Task AuthenticateUserAsyncTest()
         {
             JellyfinClient client = new JellyfinClient(new Uri("http://192.168.1.230:32770"), new UserAuthentication("unitests", "pc-dev", "pc-dev-id", "0.0.1"));            
-            var result = await client.AuthenticateUserAsync("admin", "asdasdasd");
+            var result = await client.AuthenticateUserAsync("admin", "");
             Assert.IsNotNull(result);
             Assert.IsNotNull(result.User);
         }

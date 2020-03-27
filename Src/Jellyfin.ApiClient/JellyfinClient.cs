@@ -44,7 +44,7 @@ namespace Jellyfin.ApiClient
             }
             catch (RequestFailedException ex)
             {
-                if (ex.Status == System.Net.HttpStatusCode.InternalServerError)
+                if (ex.Status == System.Net.HttpStatusCode.InternalServerError || ex.Status == System.Net.HttpStatusCode.Unauthorized)
                 {
                     throw new AuthenticationException();
                 }
@@ -58,6 +58,16 @@ namespace Jellyfin.ApiClient
             }
 
             return result;         
+        }
+
+        public async Task<QueryResult<BaseItem>> GetUserViews(string userId)
+        {
+            if (string.IsNullOrWhiteSpace(userId))
+            {
+                throw new ArgumentNullException(nameof(userId));
+            }
+
+            return await DoGet<QueryResult<BaseItem>>($"Users/{userId}/Views");
         }
 
     }
