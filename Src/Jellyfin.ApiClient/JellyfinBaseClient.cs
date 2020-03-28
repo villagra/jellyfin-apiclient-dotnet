@@ -1,12 +1,15 @@
 ﻿using Flurl;
 using Jellyfin.ApiClient.Auth;
 using Jellyfin.ApiClient.Exceptions;
+using Jellyfin.ApiClient.Model;
 using Jellyfin.ApiClient.Serialization;
 using MediaBrowser.Model.Dto;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.IO;
 using System.Net;
 using System.Net.Http;
@@ -31,20 +34,20 @@ namespace Jellyfin.ApiClient
         protected String AccessToken { get; private set; }
 
 
-        public JellyfinBaseClient(Uri serverAddress, IAuthenticationMethod authentication, ILogger logger)
+        public JellyfinBaseClient(Uri serverAddress, IAuthenticationMethod authentication, JellyfinClientOptions options = null)
         {
             this.ServerAddress = serverAddress;
             this.Authentication = authentication;
-            this.Logger = logger;
+            this.Logger = (options != null && options.Logger != null) ? options.Logger : NullLogger.Instance;
 
-            CreateClient(serverAddress);
+            CreateClient(serverAddress, options);
         }
 
-        protected void CreateClient(Uri server)
+        protected void CreateClient(Uri server, JellyfinClientOptions options = null)
         {
             _basePath = server.AbsolutePath;
 
-            var handler = new JellyfinHttpClientHandler(Logger);
+            HttpClientHandler handler = options != null && options.Handler != null ? options.Handler : new JellyfinHttpClientHandler(Logger);
             Client = new HttpClient(handler)
             {
                 BaseAddress = server                
@@ -103,11 +106,18 @@ namespace Jellyfin.ApiClient
             throw new RequestFailedException(response.StatusCode, stringcontent);
         }
 
-        protected async Task<T> DoGet<T>(String path) where T : class
+        protected async Task<T> DoGet<T>(String path, IFilters filters = null) where T : class
         {
-            path = Url.Combine(_basePath, path);
+            path = Url.Combine(_basePath, path);            
+
+            if (filters != null)
+            {
+                path.SetQueryParams(filters.GetFilters());
+            }
 
             HttpResponseMessage response = await Client.GetAsync(path).ConfigureAwait(false);
+
+            //DEBUG ONLY TO GET CONTENT    var stringcontent2 = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
             if (response.IsSuccessStatusCode)
             {

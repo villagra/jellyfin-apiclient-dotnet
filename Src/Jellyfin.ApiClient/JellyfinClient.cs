@@ -22,11 +22,11 @@ namespace Jellyfin.ApiClient
     public class JellyfinClient : JellyfinBaseClient, IApiClient
     {        
         public JellyfinClient(Uri serverAddress, IAuthenticationMethod authentication)
-            : base (serverAddress, authentication, NullLogger.Instance)
+            : base (serverAddress, authentication, null)
         { }
 
-        public JellyfinClient(Uri serverAddress, IAuthenticationMethod authentication, ILogger logger)
-            : base(serverAddress, authentication, logger)
+        public JellyfinClient(Uri serverAddress, IAuthenticationMethod authentication, JellyfinClientOptions options)
+            : base(serverAddress, authentication, options)
         { }
 
         public async Task<AuthenticationResult> AuthenticateUserAsync(string username, string password)
@@ -36,7 +36,7 @@ namespace Jellyfin.ApiClient
                 throw new ArgumentNullException(nameof(username));
             }
 
-            AuthenticationResult result;
+            AuthenticationResult result = null;
 
             try
             {
@@ -68,6 +68,17 @@ namespace Jellyfin.ApiClient
             }
 
             return await DoGet<QueryResult<BaseItem>>($"Users/{userId}/Views");
+        }
+
+        /// <summary>
+        /// Queries for items
+        /// </summary>
+        /// <param name="query">The query.</param>
+        /// <returns>Task{ItemsResult}.</returns>
+        /// <exception cref="System.ArgumentNullException">query</exception>
+        public async Task<QueryResult<BaseItem>> GetItemsAsync(string userId, ItemFilters filters = null)
+        {
+            return await DoGet<QueryResult<BaseItem>>($"Users/{userId}/Items", filters);
         }
 
     }

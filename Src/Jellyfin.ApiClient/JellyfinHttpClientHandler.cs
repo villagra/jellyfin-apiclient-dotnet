@@ -37,7 +37,7 @@ namespace Jellyfin.ApiClient
                                 retryAttempt => TimeSpan.FromSeconds(retryAttempt),
                                 onRetry: (response, calculatedWaitDuration) =>
                                 {
-                                    Logger.LogError($"Failed attempt. Waited for {calculatedWaitDuration}. Retrying. {response.Exception.Message} - {response.Exception.StackTrace}");
+                                    Logger.LogError($"Failed attempt. Waited for {calculatedWaitDuration}. Retrying. {response.Exception?.Message} - {response.Exception?.StackTrace}");
                                 }
                             );
 

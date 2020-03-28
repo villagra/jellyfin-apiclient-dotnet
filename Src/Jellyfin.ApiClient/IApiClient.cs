@@ -17,6 +17,8 @@ namespace Jellyfin.ApiClient
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>Task&lt;ItemsResult&gt;.</returns>
         Task<QueryResult<BaseItem>> GetUserViews(string userId);
+
+        Task<QueryResult<BaseItem>> GetItemsAsync(string userId, ItemFilters filters);
     }
 }
 

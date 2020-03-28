@@ -1,0 +1,131 @@
+﻿{
+  "User": {
+    "Name": "admin",
+    "ServerId": "a215a47228ab4c14842c1ab9f4132768",
+    "Id": "bb51352403934bde88923c1d14d8c461",
+    "HasPassword": true,
+    "HasConfiguredPassword": true,
+    "HasConfiguredEasyPassword": false,
+    "LastLoginDate": "2020-03-28T13:25:33.4978014Z",
+    "LastActivityDate": "2020-03-28T13:25:34.5298479Z",
+    "Configuration": {
+      "PlayDefaultAudioTrack": true,
+      "DisplayMissingEpisodes": false,
+      "GroupedFolders": [
+
+      ],
+      "SubtitleMode": "Default",
+      "DisplayCollectionsView": false,
+      "EnableLocalPassword": false,
+      "OrderedViews": [
+
+      ],
+      "LatestItemsExcludes": [
+
+      ],
+      "MyMediaExcludes": [
+
+      ],
+      "HidePlayedInLatest": true,
+      "RememberAudioSelections": true,
+      "RememberSubtitleSelections": true,
+      "EnableNextEpisodeAutoPlay": true
+    },
+    "Policy": {
+      "IsAdministrator": true,
+      "IsHidden": true,
+      "IsDisabled": false,
+      "BlockedTags": [
+
+      ],
+      "EnableUserPreferenceAccess": true,
+      "AccessSchedules": [
+
+      ],
+      "BlockUnratedItems": [
+
+      ],
+      "EnableRemoteControlOfOtherUsers": true,
+      "EnableSharedDeviceControl": true,
+      "EnableRemoteAccess": true,
+      "EnableLiveTvManagement": true,
+      "EnableLiveTvAccess": true,
+      "EnableMediaPlayback": true,
+      "EnableAudioPlaybackTranscoding": true,
+      "EnableVideoPlaybackTranscoding": true,
+      "EnablePlaybackRemuxing": true,
+      "ForceRemoteSourceTranscoding": false,
+      "EnableContentDeletion": true,
+      "EnableContentDeletionFromFolders": [
+
+      ],
+      "EnableContentDownloading": true,
+      "EnableSyncTranscoding": true,
+      "EnableMediaConversion": false,
+      "EnabledDevices": [
+
+      ],
+      "EnableAllDevices": true,
+      "EnabledChannels": [
+
+      ],
+      "EnableAllChannels": true,
+      "EnabledFolders": [
+
+      ],
+      "EnableAllFolders": true,
+      "InvalidLoginAttemptCount": 0,
+      "LoginAttemptsBeforeLockout": -1,
+      "EnablePublicSharing": true,
+      "RemoteClientBitrateLimit": 0,
+      "AuthenticationProviderId": "Emby.Server.Implementations.Library.DefaultAuthenticationProvider",
+      "PasswordResetProviderId": "Emby.Server.Implementations.Library.DefaultPasswordResetProvider"
+    }
+  },
+  "SessionInfo": {
+    "PlayState": {
+      "CanSeek": false,
+      "IsPaused": false,
+      "IsMuted": false,
+      "RepeatMode": "RepeatNone"
+    },
+    "AdditionalUsers": [
+
+    ],
+    "Capabilities": {
+      "PlayableMediaTypes": [
+
+      ],
+      "SupportedCommands": [
+
+      ],
+      "SupportsMediaControl": false,
+      "SupportsContentUploading": false,
+      "SupportsPersistentIdentifier": true,
+      "SupportsSync": false
+    },
+    "RemoteEndPoint": "192.168.1.231",
+    "PlayableMediaTypes": [
+
+    ],
+    "Id": "9cb799468f5a76733c4c1660c00572a2",
+    "UserId": "bb51352403934bde88923c1d14d8c461",
+    "UserName": "admin",
+    "Client": "unitests",
+    "LastActivityDate": "2020-03-28T13:25:34.5298479Z",
+    "LastPlaybackCheckIn": "0001-01-01T00:00:00.0000000Z",
+    "DeviceName": "pc-dev",
+    "DeviceId": "pc-dev-id",
+    "ApplicationVersion": "0.0.1",
+    "SupportedCommands": [
+
+    ],
+    "IsActive": true,
+    "SupportsMediaControl": false,
+    "SupportsRemoteControl": false,
+    "HasCustomDeviceName": false,
+    "ServerId": "a215a47228ab4c14842c1ab9f4132768"
+  },
+  "AccessToken": "83e7b26de6a54eb08d2c64b9e984ea94",
+  "ServerId": "a215a47228ab4c14842c1ab9f4132768"
+}

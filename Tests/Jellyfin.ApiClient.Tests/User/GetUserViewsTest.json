@@ -1,0 +1,146 @@
+﻿{
+  "Items": [
+    {
+      "Name": "Movies",
+      "ServerId": "a215a47228ab4c14842c1ab9f4132768",
+      "Id": "f137a2dd21bbc1b99aa5c0f6bf02a805",
+      "Etag": "2a1bd4cb04eb6d8beaf1bb7e59b54685",
+      "DateCreated": "2020-03-23T15:11:58.4750138Z",
+      "CanDelete": false,
+      "CanDownload": false,
+      "SortName": "movies",
+      "ExternalUrls": [
+
+      ],
+      "Path": "/config/root/default/Movies",
+      "EnableMediaSourceDisplay": true,
+      "Taglines": [
+
+      ],
+      "Genres": [
+
+      ],
+      "PlayAccess": "Full",
+      "RemoteTrailers": [
+
+      ],
+      "ProviderIds": {
+
+      },
+      "IsFolder": true,
+      "ParentId": "e9d5075a555c1cbc394eec4cef295274",
+      "Type": "CollectionFolder",
+      "People": [
+
+      ],
+      "Studios": [
+
+      ],
+      "GenreItems": [
+
+      ],
+      "LocalTrailerCount": 0,
+      "UserData": {
+        "PlaybackPositionTicks": 0,
+        "PlayCount": 0,
+        "IsFavorite": false,
+        "Played": false,
+        "Key": "f137a2dd-21bb-c1b9-9aa5-c0f6bf02a805"
+      },
+      "ChildCount": 1,
+      "SpecialFeatureCount": 0,
+      "DisplayPreferencesId": "f137a2dd21bbc1b99aa5c0f6bf02a805",
+      "Tags": [
+
+      ],
+      "PrimaryImageAspectRatio": 1,
+      "CollectionType": "movies",
+      "ImageTags": {
+        "Primary": "a78d79418c7abad0435df72ff93eec6f"
+      },
+      "BackdropImageTags": [
+
+      ],
+      "ScreenshotImageTags": [
+
+      ],
+      "LocationType": "FileSystem",
+      "LockedFields": [
+
+      ],
+      "LockData": false
+    },
+    {
+      "Name": "TV Shows",
+      "ServerId": "a215a47228ab4c14842c1ab9f4132768",
+      "Id": "767bffe4f11c93ef34b805451a696a4e",
+      "Etag": "4b5cb4756eb8be38fe6e24ce27302249",
+      "DateCreated": "2020-03-23T15:12:39.5340146Z",
+      "CanDelete": false,
+      "CanDownload": false,
+      "SortName": "tv shows",
+      "ExternalUrls": [
+
+      ],
+      "Path": "/config/root/default/TV Shows",
+      "EnableMediaSourceDisplay": true,
+      "Taglines": [
+
+      ],
+      "Genres": [
+
+      ],
+      "PlayAccess": "Full",
+      "RemoteTrailers": [
+
+      ],
+      "ProviderIds": {
+
+      },
+      "IsFolder": true,
+      "ParentId": "e9d5075a555c1cbc394eec4cef295274",
+      "Type": "CollectionFolder",
+      "People": [
+
+      ],
+      "Studios": [
+
+      ],
+      "GenreItems": [
+
+      ],
+      "LocalTrailerCount": 0,
+      "UserData": {
+        "PlaybackPositionTicks": 0,
+        "PlayCount": 0,
+        "IsFavorite": false,
+        "Played": false,
+        "Key": "767bffe4-f11c-93ef-34b8-05451a696a4e"
+      },
+      "ChildCount": 8,
+      "SpecialFeatureCount": 0,
+      "DisplayPreferencesId": "767bffe4f11c93ef34b805451a696a4e",
+      "Tags": [
+
+      ],
+      "PrimaryImageAspectRatio": 1,
+      "CollectionType": "tvshows",
+      "ImageTags": {
+        "Primary": "d9d7a265b3d9f729c0b95a4ba801526c"
+      },
+      "BackdropImageTags": [
+
+      ],
+      "ScreenshotImageTags": [
+
+      ],
+      "LocationType": "FileSystem",
+      "LockedFields": [
+
+      ],
+      "LockData": false
+    }
+  ],
+  "TotalRecordCount": 2,
+  "StartIndex": 0
+}
