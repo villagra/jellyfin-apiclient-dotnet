@@ -112,12 +112,13 @@ namespace Jellyfin.ApiClient
 
             if (filters != null)
             {
-                path.SetQueryParams(filters.GetFilters());
+                path = path.SetQueryParams(filters.GetFilters());
             }
 
             HttpResponseMessage response = await Client.GetAsync(path).ConfigureAwait(false);
 
             //DEBUG ONLY TO GET CONTENT    var stringcontent2 = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+            var stringcontent2 = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
             if (response.IsSuccessStatusCode)
             {

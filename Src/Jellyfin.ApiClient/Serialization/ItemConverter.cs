@@ -18,20 +18,27 @@ namespace Jellyfin.ApiClient.Serialization
         {
             // Load JObject from stream
             JObject jObject = JObject.Load(reader);
+            BaseItem obj;
 
             var type = jObject["Type"].ToString();
-
-            // Create target object based on JObject            
-            if (type == "CollectionFolder")
+            switch (type)
             {
-                var target = new CollectionFolderItem();
-                serializer.Populate(jObject.CreateReader(), target);
-                return target;
-            }
-
-            var t = new BaseItem();
-            serializer.Populate(jObject.CreateReader(), t);
-            return t;
+                case "CollectionFolder":
+                    obj = new CollectionFolderItem();
+                    break;
+                case "Folder":
+                    obj = new FolderItem();
+                    break;
+                case "Movie":
+                    obj = new MovieItem();
+                    break;
+                default:
+                    obj = new BaseItem();
+                    break;
+            }            
+            
+            serializer.Populate(jObject.CreateReader(), obj);
+            return obj;
         }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)

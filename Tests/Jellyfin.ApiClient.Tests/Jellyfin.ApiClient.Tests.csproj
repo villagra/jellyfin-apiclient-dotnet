@@ -8,11 +8,19 @@
 
   <ItemGroup>
     <None Remove="Auth\AuthenticateUserAsyncTest.json" />
+    <None Remove="Items\GetItemsAsync.json" />
+    <None Remove="Items\GetItemsAsync2.json" />
     <None Remove="User\GetUserViewsTest.json" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="Auth\AuthenticateUserAsyncTest.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Items\GetItemsAsync2.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Items\GetItemsAsync.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="User\GetUserViewsTest.json">

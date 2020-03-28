@@ -1,0 +1,30 @@
+﻿{
+  "Items": [
+    {
+      "Name": "Movies",
+      "ServerId": "a215a47228ab4c14842c1ab9f4132768",
+      "Id": "f137a2dd21bbc1b99aa5c0f6bf02a805",
+      "IsFolder": true,
+      "Type": "CollectionFolder",
+      "UserData": {},
+      "CollectionType": "movies",
+      "ImageTags": {},
+      "BackdropImageTags": [],
+      "LocationType": "FileSystem"
+    },
+    {
+      "Name": "TV Shows",
+      "ServerId": "a215a47228ab4c14842c1ab9f4132768",
+      "Id": "767bffe4f11c93ef34b805451a696a4e",
+      "IsFolder": true,
+      "Type": "CollectionFolder",
+      "UserData": {},
+      "CollectionType": "tvshows",
+      "ImageTags": {},
+      "BackdropImageTags": [],
+      "LocationType": "FileSystem"
+    }
+  ],
+  "TotalRecordCount": 2,
+  "StartIndex": 0
+}

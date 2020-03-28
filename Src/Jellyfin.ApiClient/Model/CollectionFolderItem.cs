@@ -7,9 +7,7 @@ using System.Text;
 namespace Jellyfin.ApiClient.Model
 {
     public class CollectionFolderItem : BaseItem
-    {
-        public string Name { get; set; }
-        public string ServerId { get; set; }        
+    { 
         public string Etag { get; set; }
         public DateTime DateCreated { get; set; }
         public bool CanDelete { get; set; }
@@ -30,7 +28,6 @@ namespace Jellyfin.ApiClient.Model
         public List<object> Studios { get; set; }
         public List<object> GenreItems { get; set; }
         public int LocalTrailerCount { get; set; }
-        public UserItemDataDto UserData { get; set; }
         public int ChildCount { get; set; }
         public int SpecialFeatureCount { get; set; }
         public string DisplayPreferencesId { get; set; }

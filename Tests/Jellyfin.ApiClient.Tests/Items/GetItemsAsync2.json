@@ -1,0 +1,249 @@
+﻿{
+  "Items": [
+    {
+      "Name": "Yesterday.2019.1080p.BluRay.1400MB.DD5.1.x264-GalaxyRG[TGx]",
+      "ServerId": "a215a47228ab4c14842c1ab9f4132768",
+      "Id": "a8529e68e0ea6a5bfc092e0b16c17558",
+      "IsFolder": true,
+      "Type": "Folder",
+      "UserData": {
+        "UnplayedItemCount": 0,
+        "PlaybackPositionTicks": 0,
+        "PlayCount": 0,
+        "IsFavorite": false,
+        "Played": true,
+        "Key": "a8529e68-e0ea-6a5b-fc09-2e0b16c17558"
+      },
+      "ImageTags": {
+
+      },
+      "BackdropImageTags": [
+
+      ],
+      "LocationType": "FileSystem"
+    },
+    {
+      "Name": "Star Wars: The Rise of Skywalker",
+      "ServerId": "a215a47228ab4c14842c1ab9f4132768",
+      "Id": "5729229bfd308a7e4c9705a68e552362",
+      "HasSubtitles": true,
+      "Container": "mkv,webm",
+      "PremiereDate": "2019-12-18T00:00:00.0000000Z",
+      "CriticRating": 52,
+      "OfficialRating": "PG-13",
+      "CommunityRating": 6.8,
+      "RunTimeTicks": 85115518976,
+      "ProductionYear": 2019,
+      "IsFolder": false,
+      "Type": "Movie",
+      "UserData": {
+        "PlayedPercentage": 6.5088012934070365,
+        "PlaybackPositionTicks": 5540000000,
+        "PlayCount": 6,
+        "IsFavorite": false,
+        "LastPlayedDate": "2020-03-25T14:58:35.4813220Z",
+        "Played": false,
+        "Key": "181812"
+      },
+      "VideoType": "VideoFile",
+      "ImageTags": {
+        "Primary": "ac7b57ce2bfb20a13ea8f43fb533657b"
+      },
+      "BackdropImageTags": [
+        "6f84c19004757dc6577b76bfe3f3f179"
+      ],
+      "LocationType": "FileSystem",
+      "MediaType": "Video"
+    },
+    {
+      "Name": "Ford v Ferrari",
+      "ServerId": "a215a47228ab4c14842c1ab9f4132768",
+      "Id": "1540596df54a4616127c16e1df10f823",
+      "HasSubtitles": true,
+      "Container": "mov,mp4,m4a,3gp,3g2,mj2",
+      "PremiereDate": "2019-11-13T00:00:00.0000000Z",
+      "OfficialRating": "PG-13",
+      "CommunityRating": 8.2,
+      "RunTimeTicks": 91554668544,
+      "ProductionYear": 2019,
+      "IsFolder": false,
+      "Type": "Movie",
+      "UserData": {
+        "PlaybackPositionTicks": 0,
+        "PlayCount": 0,
+        "IsFavorite": false,
+        "Played": false,
+        "Key": "359724"
+      },
+      "VideoType": "VideoFile",
+      "ImageTags": {
+        "Primary": "b124aa2e7a2cce1a2769c4f13cfe37c4"
+      },
+      "BackdropImageTags": [
+        "437c31dbf07d26db2409fba7e4e0f9dc"
+      ],
+      "LocationType": "FileSystem",
+      "MediaType": "Video"
+    },
+    {
+      "Name": "Sonic the Hedgehog",
+      "ServerId": "a215a47228ab4c14842c1ab9f4132768",
+      "Id": "c527768ac1d232c39c0a8c81304b127b",
+      "HasSubtitles": true,
+      "Container": "mov,mp4,m4a,3gp,3g2,mj2",
+      "PremiereDate": "2020-02-12T00:00:00.0000000Z",
+      "CriticRating": 64,
+      "OfficialRating": "PG",
+      "CommunityRating": 6.7,
+      "RunTimeTicks": 59465138176,
+      "ProductionYear": 2020,
+      "IsFolder": false,
+      "Type": "Movie",
+      "UserData": {
+        "PlaybackPositionTicks": 0,
+        "PlayCount": 1,
+        "IsFavorite": false,
+        "LastPlayedDate": "2020-03-23T19:38:31.0360564Z",
+        "Played": true,
+        "Key": "454626"
+      },
+      "VideoType": "VideoFile",
+      "ImageTags": {
+        "Primary": "0155519a1606cebf4d60968595b0f729"
+      },
+      "BackdropImageTags": [
+        "dc7f63b3f3506f3d398bb302c663591f"
+      ],
+      "LocationType": "FileSystem",
+      "MediaType": "Video"
+    },
+    {
+      "Name": "1917",
+      "ServerId": "a215a47228ab4c14842c1ab9f4132768",
+      "Id": "769dcb084d07a1f538bc04b9ef766e43",
+      "HasSubtitles": true,
+      "Container": "mov,mp4,m4a,3gp,3g2,mj2",
+      "PremiereDate": "2019-12-25T00:00:00.0000000Z",
+      "CriticRating": 89,
+      "OfficialRating": "R",
+      "CommunityRating": 8.4,
+      "RunTimeTicks": 71382147072,
+      "ProductionYear": 2019,
+      "IsFolder": false,
+      "Type": "Movie",
+      "UserData": {
+        "PlaybackPositionTicks": 0,
+        "PlayCount": 0,
+        "IsFavorite": false,
+        "Played": false,
+        "Key": "530915"
+      },
+      "VideoType": "VideoFile",
+      "ImageTags": {
+        "Primary": "a74d86602f9d9502e0aded1527267529"
+      },
+      "BackdropImageTags": [
+        "e6ed180c83c3362ef5f4e1e1bb2b90e9"
+      ],
+      "LocationType": "FileSystem",
+      "MediaType": "Video"
+    },
+    {
+      "Name": "Joker",
+      "ServerId": "a215a47228ab4c14842c1ab9f4132768",
+      "Id": "9bf0a8d5943841c65fb3441ecad434d1",
+      "HasSubtitles": true,
+      "Container": "mov,mp4,m4a,3gp,3g2,mj2",
+      "PremiereDate": "2019-10-02T00:00:00.0000000Z",
+      "CriticRating": 68,
+      "OfficialRating": "R",
+      "CommunityRating": 8.6,
+      "RunTimeTicks": 73091629056,
+      "ProductionYear": 2019,
+      "IsFolder": false,
+      "Type": "Movie",
+      "UserData": {
+        "PlaybackPositionTicks": 0,
+        "PlayCount": 0,
+        "IsFavorite": false,
+        "Played": false,
+        "Key": "475557"
+      },
+      "VideoType": "VideoFile",
+      "ImageTags": {
+        "Primary": "cde3a86cd791da45ab6e66b8f56a6d99"
+      },
+      "BackdropImageTags": [
+        "6d37036acb3b0f563afb6abb7ecaed6e"
+      ],
+      "LocationType": "FileSystem",
+      "MediaType": "Video"
+    },
+    {
+      "Name": "Charlie's Angels",
+      "ServerId": "a215a47228ab4c14842c1ab9f4132768",
+      "Id": "db0c40fe9f07785dbd6b0bcdf92b5c9f",
+      "HasSubtitles": true,
+      "Container": "mov,mp4,m4a,3gp,3g2,mj2",
+      "PremiereDate": "2019-11-14T00:00:00.0000000Z",
+      "CriticRating": 52,
+      "OfficialRating": "PG-13",
+      "CommunityRating": 4.4,
+      "RunTimeTicks": 71090143232,
+      "ProductionYear": 2019,
+      "IsFolder": false,
+      "Type": "Movie",
+      "UserData": {
+        "PlayedPercentage": 46.41948647129151,
+        "PlaybackPositionTicks": 32999679420,
+        "PlayCount": 5,
+        "IsFavorite": false,
+        "LastPlayedDate": "2020-03-27T11:43:55.1306676Z",
+        "Played": false,
+        "Key": "458897"
+      },
+      "VideoType": "VideoFile",
+      "ImageTags": {
+        "Primary": "45b51678acebedd035a6882040fb8ff2"
+      },
+      "BackdropImageTags": [
+        "2df6f7423cb683e84236419351690725"
+      ],
+      "LocationType": "FileSystem",
+      "MediaType": "Video"
+    },
+    {
+      "Name": "Terminator: Dark Fate",
+      "ServerId": "a215a47228ab4c14842c1ab9f4132768",
+      "Id": "30c7d030b8f47e666709cd6e86670c5b",
+      "HasSubtitles": true,
+      "Container": "mov,mp4,m4a,3gp,3g2,mj2",
+      "PremiereDate": "2019-10-23T00:00:00.0000000Z",
+      "CriticRating": 70,
+      "OfficialRating": "R",
+      "CommunityRating": 6.3,
+      "RunTimeTicks": 76862513152,
+      "ProductionYear": 2019,
+      "IsFolder": false,
+      "Type": "Movie",
+      "UserData": {
+        "PlaybackPositionTicks": 0,
+        "PlayCount": 0,
+        "IsFavorite": false,
+        "Played": false,
+        "Key": "290859"
+      },
+      "VideoType": "VideoFile",
+      "ImageTags": {
+        "Primary": "c26803aa9aa5a4deca27563a92b9d25c"
+      },
+      "BackdropImageTags": [
+        "ecae91b41958bf01409e1921d44ad643"
+      ],
+      "LocationType": "FileSystem",
+      "MediaType": "Video"
+    }
+  ],
+  "TotalRecordCount": 8,
+  "StartIndex": 0
+}
