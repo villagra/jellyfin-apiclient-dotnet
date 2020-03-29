@@ -7,6 +7,11 @@ namespace Jellyfin.ApiClient.Model
     public class ItemFilters : IFilters
     {
         static string FILTER_PARENTID = "ParentId";
+        static string FILTER_RECURSIVE = "Recursive";
+        static string FILTER_ITEMTYPE = "IncludeItemTypes";
+        static string FILTER_GROUPITEMS = "GroupItems";
+        static string FILTER_IS_PLAYED = "IsPlayed";
+        static string FILTER_LIMIT = "Limit";
 
         Dictionary<string, string> filters = new Dictionary<string, string>();
 
@@ -17,21 +22,77 @@ namespace Jellyfin.ApiClient.Model
 
         public ItemFilters FilterByParentId(String parentId)
         {
-            if (filters.ContainsKey(FILTER_PARENTID))
-            {
-                filters[FILTER_PARENTID] = parentId;
-            }
-            else
-            {
-                filters.Add(FILTER_PARENTID, parentId);
-            }
+            AddValue(FILTER_PARENTID, parentId);
+            return this;
+        }
 
+        public ItemFilters Recursive(bool recursiveSearch = true)
+        {
+            AddValue(FILTER_RECURSIVE, recursiveSearch);
+            return this;
+        }
+
+        public ItemFilters IsPlayed(bool isPlayed = true)
+        {
+            AddValue(FILTER_IS_PLAYED, isPlayed);
+            return this;
+        }
+
+        public ItemFilters GroupItems(bool groupItems = true)
+        {
+            AddValue(FILTER_GROUPITEMS, groupItems);
+            return this;
+        }
+
+        public ItemFilters IncludeItemType(ItemTypes type)
+        {
+            AddOrAppendValue(FILTER_ITEMTYPE, type.ToString());
+            return this;
+        }
+
+        public ItemFilters Limit(int value)
+        {
+            AddValue(FILTER_LIMIT, value.ToString());
             return this;
         }
 
         public Dictionary<string, string> GetFilters()
         {
             return filters;
+        }
+
+        private void AddValue(string key, bool value)
+        {
+            AddValue(key, value.ToString().ToLower());
+        }
+        private void AddValue(string key, string value)
+        {
+            if (filters.ContainsKey(key))
+            {
+                filters[key] = value;
+            }
+            else
+            {
+                filters.Add(key, value);
+            }
+        }
+        private void AddOrAppendValue(string key, string value)
+        {
+            if (filters.ContainsKey(key))
+            {
+                if (String.IsNullOrWhiteSpace(filters[key]))
+                {
+                    filters[key] = value;
+                }
+                else
+                {
+                    filters[key] += $",{value}";
+                }
+            }
+            else
+            {
+                filters.Add(key, value);
+            }
         }
     }
 }

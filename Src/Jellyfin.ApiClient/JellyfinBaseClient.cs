@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Net.Http;
@@ -118,7 +119,10 @@ namespace Jellyfin.ApiClient
             HttpResponseMessage response = await Client.GetAsync(path).ConfigureAwait(false);
 
             //DEBUG ONLY TO GET CONTENT    var stringcontent2 = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-            var stringcontent2 = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+#if DEBUG
+            var responseString = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+            Debug.WriteLine(responseString);
+#endif
 
             if (response.IsSuccessStatusCode)
             {

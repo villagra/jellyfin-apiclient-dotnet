@@ -32,6 +32,21 @@ namespace Jellyfin.ApiClient.Serialization
                 case "Movie":
                     obj = new MovieItem();
                     break;
+                case "Episode":
+                    obj = new EpisodeItem();
+                    break;
+                case "Audio":
+                    obj = new AudioItem();
+                    break;
+                case "Series":
+                    obj = new SeriesItem();
+                    break;
+                case "Season":
+                    obj = new SeasonItem();
+                    break;
+                case "MusicAlbum":
+                    obj = new MusicAlbumItem();
+                    break;
                 default:
                     obj = new BaseItem();
                     break;
