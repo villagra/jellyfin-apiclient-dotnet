@@ -16,9 +16,9 @@ namespace Jellyfin.ApiClient.Model
         /// </summary>
         public int TotalRecordCount { get; set; }
 
-        public QueryResult()
-        {
+        public int StartIndex { get; set; } = 0;
 
-        }
+        public QueryResult()
+        { }
     }
 }

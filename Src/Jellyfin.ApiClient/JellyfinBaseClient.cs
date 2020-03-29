@@ -118,8 +118,8 @@ namespace Jellyfin.ApiClient
 
             HttpResponseMessage response = await Client.GetAsync(path).ConfigureAwait(false);
 
-            //DEBUG ONLY TO GET CONTENT    var stringcontent2 = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 #if DEBUG
+            //DEBUG ONLY TO GET CONTENT
             var responseString = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             Debug.WriteLine(responseString);
 #endif

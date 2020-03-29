@@ -9,6 +9,10 @@ namespace Jellyfin.ApiClient.Model
         Movie,
         Episode,
         Folder,
+        Audio,
+        Series,
+        Season,
+        MusicAlbum,
         CollectionFolder
     }
 }

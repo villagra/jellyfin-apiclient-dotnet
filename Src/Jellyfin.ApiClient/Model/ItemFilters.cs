@@ -12,6 +12,8 @@ namespace Jellyfin.ApiClient.Model
         static string FILTER_GROUPITEMS = "GroupItems";
         static string FILTER_IS_PLAYED = "IsPlayed";
         static string FILTER_LIMIT = "Limit";
+        static string FILTER_START_INDEX = "StartIndex";
+        
 
         Dictionary<string, string> filters = new Dictionary<string, string>();
 
@@ -50,9 +52,19 @@ namespace Jellyfin.ApiClient.Model
             return this;
         }
 
-        public ItemFilters Limit(int value)
+        public ItemFilters Take(int value)
         {
             AddValue(FILTER_LIMIT, value.ToString());
+            return this;
+        }
+
+        /// <summary>
+        /// Skips over a given number of items within the results. Use for paging.
+        /// </summary>
+        /// <value>The start index.</value>
+        public ItemFilters Skip(int value)
+        {
+            AddValue(FILTER_START_INDEX, value.ToString());
             return this;
         }
 
