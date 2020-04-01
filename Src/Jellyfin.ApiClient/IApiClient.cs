@@ -19,6 +19,8 @@ namespace Jellyfin.ApiClient
         Task<QueryResult<BaseItem>> GetUserViews(string userId);
 
         Task<QueryResult<BaseItem>> GetItemsAsync(string userId, ItemFilters filters);
+
+        Task<MediaBrowser.Model.MediaInfo.PlaybackInfoResponse> GetPlaybackInfoAsync(string userId, string itemId);
     }
 }
 

@@ -2,6 +2,7 @@
 using Jellyfin.ApiClient.Exceptions;
 using Jellyfin.ApiClient.Model;
 using Jellyfin.ApiClient.Serialization;
+using MediaBrowser.Model.MediaInfo;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using Newtonsoft.Json;
@@ -81,5 +82,9 @@ namespace Jellyfin.ApiClient
             return await DoGet<QueryResult<BaseItem>>($"Users/{userId}/Items", filters);
         }
 
+        public async Task<PlaybackInfoResponse> GetPlaybackInfoAsync(string userId, string itemId)
+        {
+            return await DoGet<PlaybackInfoResponse> ($"Items/{itemId}/PlaybackInfo?UserId={userId}"); 
+        }
     }
 }
