@@ -25,6 +25,8 @@ function Join-ArrayPath{
 $projectPath = Join-ArrayPath $PSScriptRoot, 'Src', 'Jellyfin.ApiClient'
 $projectFile = $projectPath + "\Jellyfin.ApiClient.csproj";
 
+Write-Host $projectFile
+
 #Generate version number
 [xml]$xml = [xml](Get-Content $projectFile)
 $version = [version]$xml.Project.PropertyGroup.Version
@@ -34,3 +36,5 @@ $newVersionNumber =  "{0}.{1}.{2}" -f $version.Major,$version.Minor, $commitsNum
 
 $xml.Project.PropertyGroup.Version = $newVersionNumber;
 $xml.Save($projectFile);
+
+Write-Host $newVersionNumber
