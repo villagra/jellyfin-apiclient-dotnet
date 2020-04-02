@@ -21,9 +21,7 @@ jobs:
         dotnet-version: 3.1.101
     - name: Install dependencies
       run: dotnet restore
-    - name: Test git rev list
-      run: git rev-list refs/remotes/origin/master --count
-    - name: Test powershell
+    - name: Increment version number
       run: ./IncrementVersionNumber.ps1
       shell: pwsh
     - name: Build
