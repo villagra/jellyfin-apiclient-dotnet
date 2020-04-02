@@ -15,5 +15,7 @@ namespace Jellyfin.ApiClient.Model
         public String Name { get; set; }
         public String ServerId { get; set; }
         public UserItemDataDto UserData { get; set; }
+        public Dictionary<MediaBrowser.Model.Entities.ImageType, string> ImageTags { get; set; }
+        public string[] BackdropImageTags { get; set; }
     }
 }

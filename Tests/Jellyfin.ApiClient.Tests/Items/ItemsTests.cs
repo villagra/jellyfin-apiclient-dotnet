@@ -31,15 +31,11 @@ namespace Jellyfin.ApiClient.Tests.Items
 
             Assert.AreEqual(1, items.Items.OfType<FolderItem>().Count());
             Assert.AreEqual(7, items.Items.OfType<MovieItem>().Count());
-        }
 
-        /*
-        [TestMethod]
-        public async Task GetItemsWithFiltersAsync()
-        {
-
+            var fMovie = items.Items.OfType<MovieItem>().Where(p => p.Name == "Ford v Ferrari").SingleOrDefault();
+            Assert.IsNotNull(fMovie);
+            Assert.AreEqual(1, fMovie.ImageTags.Count());
         }
-        */
 
     }
 }
