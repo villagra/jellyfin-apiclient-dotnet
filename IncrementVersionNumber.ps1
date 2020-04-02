@@ -33,6 +33,7 @@ $version = [version]$xml.Project.PropertyGroup.Version
 
 Invoke-Expression "git rev-list HEAD --count 2>&1"  | Tee-Object -Variable commitsNumber
 $newVersionNumber =  "{0}.{1}.{2}" -f $version.Major,$version.Minor, $commitsNumber
+$newVersionNumber = "0.0.500"
 
 $xml.Project.PropertyGroup.Version = $newVersionNumber;
 $xml.Save($projectFile);
