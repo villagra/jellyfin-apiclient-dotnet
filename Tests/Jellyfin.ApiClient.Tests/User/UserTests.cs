@@ -20,7 +20,7 @@ namespace Jellyfin.ApiClient.Tests.User
         {
             (JellyfinClient client, Mock<MockHandler> handlerMock) = CreateMockClient();
 
-            var responseContent = MockUtils.GetFileContents(Path.Combine("Items", "GetUserViewsTest.json"));
+            var responseContent = MockUtils.GetFileContents(Path.Combine("User", "GetUserViewsTest.json"));
             handlerMock.Setup(p => p.SendAsync(It.IsAny<HttpMethod>(), It.IsAny<string>())).Returns(MockUtils.Success(responseContent));
             
             var views = await client.GetUserViews(Guid.NewGuid().ToString());
