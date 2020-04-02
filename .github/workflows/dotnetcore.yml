@@ -20,7 +20,7 @@ jobs:
     - name: Install dependencies
       run: dotnet restore
     - name: Test powershell
-      run: IncrementVersionNumber.ps1
+      run: ./IncrementVersionNumber.ps1
       shell: pwsh
     - name: Build
       run: dotnet build --configuration Release --no-restore
