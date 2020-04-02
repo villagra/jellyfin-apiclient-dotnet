@@ -2,7 +2,18 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>0.0.500</Version>
+    <Version>0.0.506</Version>
+    <Title>Unofficial .Net client for Jellyfin API</Title>
+    <PackageId>Villagra.Jellyfin.ApiClient</PackageId>
+    <Authors>Jose Maria Villagra</Authors>
+    <Company>Villagralabs</Company>
+    <Description>Unofficial .Net client for Jellyfin API</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/villagra/jellyfin-apiclient-dotnet</PackageProjectUrl>
+    <Product>Unnoficial .Net client for Jellyfin API</Product>
+    <Copyright>Copyright (c) 2020 Jose Maria Villagra</Copyright>
+    <RepositoryUrl>https://github.com/villagra/jellyfin-apiclient-dotnet</RepositoryUrl>
+    <PackageTags>Jellyfin</PackageTags>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Flurl.Http" Version="2.4.2" />
