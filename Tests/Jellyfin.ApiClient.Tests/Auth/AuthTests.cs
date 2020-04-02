@@ -9,6 +9,7 @@ using Jellyfin.ApiClient.Tests.Mocks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;
+using System.IO;
 using System.Net.Http;
 using System.Security.Authentication;
 using System.Threading.Tasks;
@@ -44,7 +45,7 @@ namespace Jellyfin.ApiClient.Tests.Auth
         {
             (JellyfinClient client, Mock<MockHandler> handlerMock) = CreateMockClient();
 
-            var responseContent = MockUtils.GetFileContents(@"Auth\AuthenticateUserAsyncTest.json");
+            var responseContent = MockUtils.GetFileContents(Path.Combine("Auth", "AuthenticateUserAsyncTest.json"));
             handlerMock.Setup(p => p.SendAsync(It.IsAny<HttpMethod>(), It.IsAny<string>())).Returns(MockUtils.Success(responseContent));            
             
             var result = await client.AuthenticateUserAsync("admin ", "password");

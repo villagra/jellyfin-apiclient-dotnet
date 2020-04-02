@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Jellyfin.ApiClient.Tests.Items
 {
@@ -20,11 +21,11 @@ namespace Jellyfin.ApiClient.Tests.Items
         {
             (JellyfinClient client, Mock<MockHandler> handlerMock) = CreateMockClient();
 
-            var responseContent = MockUtils.GetFileContents(@"Items\GetItemsAsync.json");
+            var responseContent = MockUtils.GetFileContents(Path.Combine("Items","GetItemsAsync.json"));
             handlerMock.Setup(p => p.SendAsync(It.IsAny<HttpMethod>(), It.IsAny<string>())).Returns(MockUtils.Success(responseContent));
             var items = await client.GetItemsAsync(Guid.NewGuid().ToString());
 
-            responseContent = MockUtils.GetFileContents(@"Items\GetItemsAsync2.json");
+            responseContent = MockUtils.GetFileContents(Path.Combine("Items", "GetItemsAsync2.json"));
             handlerMock.Setup(p => p.SendAsync(It.IsAny<HttpMethod>(), It.IsAny<string>())).Returns(MockUtils.Success(responseContent));
             ItemFilters filters = ItemFilters.Create().FilterByParentId(items.Items[0].Id);
             items = await client.GetItemsAsync(Guid.NewGuid().ToString(), filters);
