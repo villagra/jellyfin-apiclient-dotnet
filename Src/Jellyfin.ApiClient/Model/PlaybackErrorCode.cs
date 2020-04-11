@@ -4,8 +4,10 @@ using System.Text;
 
 namespace Jellyfin.ApiClient.Model
 {
-    public class SeriesItem : BaseItem
+    public enum PlaybackErrorCode
     {
-        public string Overview { get; set; }
+        NotAllowed = 0,
+        NoCompatibleStream = 1,
+        RateLimitExceeded = 2
     }
 }

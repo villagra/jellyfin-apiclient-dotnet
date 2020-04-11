@@ -82,9 +82,32 @@ namespace Jellyfin.ApiClient
             return await DoGet<QueryResult<BaseItem>>($"Users/{userId}/Items", filters);
         }
 
-        public async Task<PlaybackInfoResponse> GetPlaybackInfoAsync(string userId, string itemId)
+        public async Task<BaseItem> GetItemAsync(string userId, string itemId)
         {
-            return await DoGet<PlaybackInfoResponse> ($"Items/{itemId}/PlaybackInfo?UserId={userId}"); 
+            return await DoGet<BaseItem>($"Users/{userId}/Items/{itemId}");
+        }
+
+        public async Task<QueryResult<SeasonItem>> GetSeasons(string userId, string showId)
+        {
+            ItemFilters filters = ItemFilters.Create().FilterByUserId(userId);
+            return await DoGet<QueryResult<SeasonItem>>($"Shows/{showId}/Seasons", filters);
+        }
+
+        public async Task<QueryResult<EpisodeItem>> GetEpisodes(string userId, string showId, string seasonId)
+        {
+            ItemFilters filters = ItemFilters.Create().FilterByUserId(userId).FilterBySeasonId(seasonId).IncludeField(nameof(EpisodeItem.Overview));
+            return await DoGet<QueryResult<EpisodeItem>>($"Shows/{showId}/Episodes", filters);
+        }
+
+        public async Task<QueryResult<EpisodeItem>> GetNextEpisode(string userId, string showId)
+        {
+            ItemFilters filters = ItemFilters.Create().FilterByUserId(userId).FilterBySeriesId(showId);
+            return await DoGet<QueryResult<EpisodeItem>>($"Shows/NextUp", filters);
+        }
+
+        public async Task<Model.PlaybackInfoResponse> GetPlaybackInfoAsync(string userId, string itemId)
+        {
+            return await DoGet<Model.PlaybackInfoResponse>($"Items/{itemId}/PlaybackInfo?UserId={userId}");
         }
     }
 }

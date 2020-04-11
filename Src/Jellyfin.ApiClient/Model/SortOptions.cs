@@ -4,8 +4,9 @@ using System.Text;
 
 namespace Jellyfin.ApiClient.Model
 {
-    public class SeriesItem : BaseItem
+    public enum SortOptions
     {
-        public string Overview { get; set; }
+        CommunityRating,
+        SortName
     }
 }

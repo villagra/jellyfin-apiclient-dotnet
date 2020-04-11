@@ -5,7 +5,10 @@ using System.Text;
 namespace Jellyfin.ApiClient.Model
 {
     public class ItemFilters : IFilters
-    {
+    {        
+        static string FILTER_SERIESID = "SeriesId";
+        static string FILTER_SEASONID = "seasonId";
+        static string FILTER_USERID = "userId";
         static string FILTER_PARENTID = "ParentId";
         static string FILTER_RECURSIVE = "Recursive";
         static string FILTER_ITEMTYPE = "IncludeItemTypes";
@@ -13,13 +16,34 @@ namespace Jellyfin.ApiClient.Model
         static string FILTER_IS_PLAYED = "IsPlayed";
         static string FILTER_LIMIT = "Limit";
         static string FILTER_START_INDEX = "StartIndex";
-        
+        static string FILTER_FIELDS = "Fields";        
+        static string SORT = "SortBy";
+
+
 
         Dictionary<string, string> filters = new Dictionary<string, string>();
 
         public static ItemFilters Create()
         {
             return new ItemFilters();
+        }
+
+        internal ItemFilters FilterBySeriesId(string seriesId)
+        {
+            AddValue(FILTER_SERIESID, seriesId);
+            return this;
+        }
+
+        public ItemFilters FilterBySeasonId(String seasonId)
+        {
+            AddValue(FILTER_SEASONID, seasonId);
+            return this;
+        }
+        
+        public ItemFilters FilterByUserId(String userId)
+        {
+            AddValue(FILTER_USERID, userId);
+            return this;
         }
 
         public ItemFilters FilterByParentId(String parentId)
@@ -46,6 +70,12 @@ namespace Jellyfin.ApiClient.Model
             return this;
         }
 
+        public ItemFilters IncludeField(string field)
+        {
+            AddOrAppendValue(FILTER_FIELDS, field);
+            return this;
+        }
+
         public ItemFilters IncludeItemType(ItemTypes type)
         {
             AddOrAppendValue(FILTER_ITEMTYPE, type.ToString());
@@ -65,6 +95,12 @@ namespace Jellyfin.ApiClient.Model
         public ItemFilters Skip(int value)
         {
             AddValue(FILTER_START_INDEX, value.ToString());
+            return this;
+        }
+
+        public ItemFilters SortBy(SortOptions sort)
+        {
+            AddValue(SORT, sort.ToString());
             return this;
         }
 
