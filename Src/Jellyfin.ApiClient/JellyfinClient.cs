@@ -52,6 +52,10 @@ namespace Jellyfin.ApiClient
 
                 throw;
             }
+            catch (Exception ex)
+            {
+                throw;
+            }
 
             if (result != null)
             {
@@ -82,6 +86,12 @@ namespace Jellyfin.ApiClient
             return await DoGet<QueryResult<BaseItem>>($"Users/{userId}/Items", filters);
         }
 
+        public async Task<QueryResult<BaseItem>> GetItemsInProgressAsync(string userId, ItemFilters filters = null)
+        {
+            return await DoGet<QueryResult<BaseItem>>($"Users/{userId}/Items/Resume", filters);
+        }
+
+
         public async Task<BaseItem> GetItemAsync(string userId, string itemId)
         {
             return await DoGet<BaseItem>($"Users/{userId}/Items/{itemId}");
@@ -108,6 +118,19 @@ namespace Jellyfin.ApiClient
         public async Task<Model.PlaybackInfoResponse> GetPlaybackInfoAsync(string userId, string itemId)
         {
             return await DoGet<Model.PlaybackInfoResponse>($"Items/{itemId}/PlaybackInfo?UserId={userId}");
+        }
+
+        public async Task UpdatePlaybackStatus(string mediaSourceId, TimeSpan position)
+        {
+            PlaybackProgressInfo data = new PlaybackProgressInfo();
+            if (Guid.TryParse(mediaSourceId, out Guid itemId))
+            {
+                data.ItemId = itemId;
+            }
+
+            data.MediaSourceId = mediaSourceId;
+            data.PositionTicks = position.Ticks;
+            await DoPost("Sessions/Playing/Progress", data);
         }
     }
 }

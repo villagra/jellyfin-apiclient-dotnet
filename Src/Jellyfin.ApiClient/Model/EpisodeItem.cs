@@ -9,6 +9,7 @@ namespace Jellyfin.ApiClient.Model
     public class EpisodeItem : BaseItem
     {
         public int IndexNumber { get; set; }
+        public int ParentIndexNumber { get; set; }
 
         [DefaultValue("")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Populate)]
@@ -16,5 +17,7 @@ namespace Jellyfin.ApiClient.Model
 
         public String SeriesId { get; set; }
         public String SeasonId { get; set; }
+        public String SeriesPrimaryImageTag { get; set; }
+        public String[] ParentBackdropImageTags { get; set; }
     }
 }

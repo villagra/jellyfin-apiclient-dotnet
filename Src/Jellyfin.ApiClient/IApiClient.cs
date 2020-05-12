@@ -19,6 +19,8 @@ namespace Jellyfin.ApiClient
         Task<QueryResult<BaseItem>> GetUserViews(string userId);
 
         Task<BaseItem> GetItemAsync(string userId, string itemId);
+        
+        Task<QueryResult<BaseItem>> GetItemsInProgressAsync(string userId, ItemFilters filters);
 
         Task<QueryResult<BaseItem>> GetItemsAsync(string userId, ItemFilters filters);
 
@@ -29,6 +31,8 @@ namespace Jellyfin.ApiClient
         Task<QueryResult<EpisodeItem>> GetNextEpisode(string userId, string showId);
 
         Task<PlaybackInfoResponse> GetPlaybackInfoAsync(string userId, string itemId);
+
+        Task UpdatePlaybackStatus(string mediaSourceId, TimeSpan position);
     }
 }
 

@@ -18,6 +18,7 @@ namespace Jellyfin.ApiClient.Model
         static string FILTER_START_INDEX = "StartIndex";
         static string FILTER_FIELDS = "Fields";        
         static string SORT = "SortBy";
+        static string SORT_ORDER = "SortOrder";
 
 
 
@@ -101,6 +102,12 @@ namespace Jellyfin.ApiClient.Model
         public ItemFilters SortBy(SortOptions sort)
         {
             AddValue(SORT, sort.ToString());
+            return this;
+        }
+
+        public ItemFilters Order(SortOrder order)
+        {
+            AddValue(SORT_ORDER, order.ToString());
             return this;
         }
 

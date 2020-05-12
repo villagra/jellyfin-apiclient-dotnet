@@ -4,11 +4,9 @@ using System.Text;
 
 namespace Jellyfin.ApiClient.Model
 {
-    public enum SortOptions
+    public enum SortOrder
     {
-        CommunityRating,
-        SortName,
-        DateCreated,
-        PremiereDate
+        Ascending,
+        Descending
     }
 }

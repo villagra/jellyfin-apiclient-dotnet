@@ -87,6 +87,19 @@ namespace Jellyfin.ApiClient
             }
         }
 
+        protected async Task DoPost(String path, Object data)
+        {
+            path = Url.Combine(_basePath, path);
+
+            HttpResponseMessage response = await Client.PostAsync(path, new JsonContent(data)).ConfigureAwait(false);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                var stringcontent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                throw new RequestFailedException(response.StatusCode, stringcontent);
+            }
+        }
+
         protected async Task<T> DoPost<T>(String path, Object data) where T : class
         {
             path = Url.Combine(_basePath, path);
@@ -121,6 +134,7 @@ namespace Jellyfin.ApiClient
 #if DEBUG
             //DEBUG ONLY TO GET CONTENT
             var responseString = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+            Debug.WriteLine(path);
             Debug.WriteLine(responseString);
 #endif
 
