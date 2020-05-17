@@ -33,6 +33,8 @@ namespace Jellyfin.ApiClient
         Task<PlaybackInfoResponse> GetPlaybackInfoAsync(string userId, string itemId);
 
         Task UpdatePlaybackStatus(string mediaSourceId, TimeSpan position);
+
+        Task<MediaBrowser.Model.Dto.UserItemDataDto> SetAsWatched(string userId, string itemId, bool watched);
     }
 }
 

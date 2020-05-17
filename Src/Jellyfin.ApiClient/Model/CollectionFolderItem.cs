@@ -34,8 +34,6 @@ namespace Jellyfin.ApiClient.Model
         public List<object> Tags { get; set; }
         public int PrimaryImageAspectRatio { get; set; }
         public string CollectionType { get; set; }
-        public Dictionary<ImageType, string> ImageTags { get; set; }
-        public List<object> BackdropImageTags { get; set; }
         public List<object> ScreenshotImageTags { get; set; }
         public string LocationType { get; set; }
         public List<object> LockedFields { get; set; }

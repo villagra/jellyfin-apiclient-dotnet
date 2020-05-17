@@ -7,6 +7,7 @@
         public int Index { get; set; }
         public string Type { get; set; }
         public string DeliveryUrl { get; set; }
+        public bool IsExternal { get; set; }
         public bool IsTextSubtitleStream { get; set; }
     }
 }

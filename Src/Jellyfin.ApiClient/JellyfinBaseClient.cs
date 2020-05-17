@@ -120,6 +120,38 @@ namespace Jellyfin.ApiClient
             throw new RequestFailedException(response.StatusCode, stringcontent);
         }
 
+        protected async Task<T> DoDelete<T>(String path, IFilters filters = null) where T : class
+        {
+            path = Url.Combine(_basePath, path);
+
+            if (filters != null)
+            {
+                path = path.SetQueryParams(filters.GetFilters());
+            }
+
+            HttpResponseMessage response = await Client.DeleteAsync(path).ConfigureAwait(false);
+
+#if DEBUG
+            //DEBUG ONLY TO GET CONTENT
+            var responseString = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+            Debug.WriteLine(path);
+            Debug.WriteLine(responseString);
+#endif
+
+            if (response.IsSuccessStatusCode)
+            {
+                using (var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
+                using (var reader = new StreamReader(stream))
+                using (var json = new JsonTextReader(reader))
+                {
+                    return _serializer.Deserialize<T>(json);
+                }
+            }
+
+            var stringcontent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+            throw new RequestFailedException(response.StatusCode, stringcontent);
+        }
+
         protected async Task<T> DoGet<T>(String path, IFilters filters = null) where T : class
         {
             path = Url.Combine(_basePath, path);            

@@ -2,6 +2,7 @@
 using Jellyfin.ApiClient.Exceptions;
 using Jellyfin.ApiClient.Model;
 using Jellyfin.ApiClient.Serialization;
+using MediaBrowser.Model.Dto;
 using MediaBrowser.Model.MediaInfo;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
@@ -18,7 +19,7 @@ using System.Threading.Tasks;
 namespace Jellyfin.ApiClient
 {
     /// <summary>
-    /// https://github.com/MediaBrowser/Emby/wiki
+    /// 0
     /// </summary>
     public class JellyfinClient : JellyfinBaseClient, IApiClient
     {        
@@ -52,7 +53,7 @@ namespace Jellyfin.ApiClient
 
                 throw;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -131,6 +132,16 @@ namespace Jellyfin.ApiClient
             data.MediaSourceId = mediaSourceId;
             data.PositionTicks = position.Ticks;
             await DoPost("Sessions/Playing/Progress", data);
+        }
+
+        public async Task<UserItemDataDto> SetAsWatched(string userId, string itemId, bool watched)
+        {
+            if (watched)
+            {
+                //20200517081414
+                return await DoPost<UserItemDataDto>($"Users/{userId}/PlayedItems/{itemId}", new object());
+            }
+            return await DoDelete<UserItemDataDto>($"Users/{userId}/PlayedItems/{itemId}");
         }
     }
 }

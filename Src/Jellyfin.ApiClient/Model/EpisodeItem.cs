@@ -14,7 +14,7 @@ namespace Jellyfin.ApiClient.Model
         [DefaultValue("")]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Populate)]
         public String Overview { get; set; }
-
+        public long RunTimeTicks { get; set; }
         public String SeriesId { get; set; }
         public String SeasonId { get; set; }
         public String SeriesPrimaryImageTag { get; set; }
