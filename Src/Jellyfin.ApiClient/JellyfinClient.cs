@@ -106,7 +106,7 @@ namespace Jellyfin.ApiClient
 
         public async Task<QueryResult<EpisodeItem>> GetEpisodes(string userId, string showId, string seasonId)
         {
-            ItemFilters filters = ItemFilters.Create().FilterByUserId(userId).FilterBySeasonId(seasonId).IncludeField(nameof(EpisodeItem.Overview));
+            ItemFilters filters = ItemFilters.Create().FilterByUserId(userId).FilterBySeasonId(seasonId).IncludeField(nameof(EpisodeItem.Overview)).IncludeField(nameof(EpisodeItem.MediaStreams));
             return await DoGet<QueryResult<EpisodeItem>>($"Shows/{showId}/Episodes", filters);
         }
 
