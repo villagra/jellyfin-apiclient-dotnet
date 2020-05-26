@@ -11,7 +11,9 @@ namespace Jellyfin.ApiClient.Model
         public string OfficialRating { get; set; }
         public double CommunityRating { get; set; }
         public long RunTimeTicks { get; set; }
-        public int ProductionYear { get; set; }                 
-
+        public int? ProductionYear { get; set; }
+        public string Overview { get; set; }
+        public string[] Genres { get; set; }
+        public Person[] People { get; set; }
     }
 }
