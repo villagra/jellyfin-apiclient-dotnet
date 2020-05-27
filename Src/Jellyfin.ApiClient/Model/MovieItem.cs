@@ -15,5 +15,6 @@ namespace Jellyfin.ApiClient.Model
         public string Overview { get; set; }
         public string[] Genres { get; set; }
         public Person[] People { get; set; }
+        public MediaStream[] MediaStreams { get; set; }
     }
 }
