@@ -18,5 +18,7 @@ namespace Jellyfin.ApiClient.Model
 
         public ExternalUrl[] ExternalUrls { get; set; } = new ExternalUrl[0];
 
+        public Person[] People { get; set; }
+
     }
 }
