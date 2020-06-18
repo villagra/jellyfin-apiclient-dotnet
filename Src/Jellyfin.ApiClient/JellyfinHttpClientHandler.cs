@@ -34,7 +34,7 @@ namespace Jellyfin.ApiClient
                             //.Or<TimeoutRejectedException>() // TimeoutRejectedException from Polly's TimeoutPolicy
                             .WaitAndRetryAsync(
                                 3,
-                                retryAttempt => TimeSpan.FromSeconds(retryAttempt),
+                                retryAttempt => TimeSpan.FromMilliseconds(retryAttempt*50),
                                 onRetry: (response, calculatedWaitDuration) =>
                                 {
                                     Logger.LogError($"Failed attempt. Waited for {calculatedWaitDuration}. Retrying. {response.Exception?.Message} - {response.Exception?.StackTrace}");
