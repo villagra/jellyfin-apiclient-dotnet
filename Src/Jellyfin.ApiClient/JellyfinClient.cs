@@ -1,26 +1,13 @@
 ﻿using Jellyfin.ApiClient.Auth;
 using Jellyfin.ApiClient.Exceptions;
 using Jellyfin.ApiClient.Model;
-using Jellyfin.ApiClient.Serialization;
 using MediaBrowser.Model.Dto;
-using MediaBrowser.Model.MediaInfo;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Abstractions;
-using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Net.Http;
 using System.Security.Authentication;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Jellyfin.ApiClient
 {
-    /// <summary>
-    /// 0
-    /// </summary>
     public class JellyfinClient : JellyfinBaseClient, IApiClient
     {        
         public JellyfinClient(Uri serverAddress, IAuthenticationMethod authentication)
