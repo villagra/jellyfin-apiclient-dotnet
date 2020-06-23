@@ -16,7 +16,8 @@ namespace Jellyfin.ApiClient.Model
         static string FILTER_IS_PLAYED = "IsPlayed";
         static string FILTER_LIMIT = "Limit";
         static string FILTER_START_INDEX = "StartIndex";
-        static string FILTER_FIELDS = "Fields";        
+        static string FILTER_FIELDS = "Fields";
+        static string SEARCH = "searchTerm";
         static string SORT = "SortBy";
         static string SORT_ORDER = "SortOrder";
 
@@ -32,6 +33,12 @@ namespace Jellyfin.ApiClient.Model
         internal ItemFilters FilterBySeriesId(string seriesId)
         {
             AddValue(FILTER_SERIESID, seriesId);
+            return this;
+        }
+
+        public ItemFilters SearchBy(string query)
+        {
+            AddValue(SEARCH, query);
             return this;
         }
 
