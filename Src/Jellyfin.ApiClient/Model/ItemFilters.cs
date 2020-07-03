@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MediaBrowser.Model.Users;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -75,6 +76,21 @@ namespace Jellyfin.ApiClient.Model
         public ItemFilters GroupItems(bool groupItems = true)
         {
             AddValue(FILTER_GROUPITEMS, groupItems);
+            return this;
+        }
+
+        public ItemFilters Add(Dictionary<string, List<string>> filters)
+        {
+            if (filters != null)
+            {
+                foreach (var filter in filters)
+                {
+                    foreach (var filterValue in filter.Value)
+                    {
+                        AddOrAppendValue(filter.Key, filterValue);
+                    }
+                }
+            }
             return this;
         }
 

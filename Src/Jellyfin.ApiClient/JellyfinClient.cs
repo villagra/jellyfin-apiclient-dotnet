@@ -79,6 +79,12 @@ namespace Jellyfin.ApiClient
             return await DoGet<QueryResult<BaseItem>>($"Users/{userId}/Items/Resume", filters);
         }
 
+        public async Task<FiltersResponse> GetFilters(string userId, ItemFilters filters = null)
+        {
+            //filters.FilterByUserId
+            //https://jellyfin.jetflix.media/Items/Filters?UserId=95623407d249461a974942a3109af020&IncludeItemTypes=Series
+            return await DoGet<FiltersResponse>($"Items/Filters?UserId={userId}", filters);
+        }
 
         public async Task<BaseItem> GetItemAsync(string userId, string itemId)
         {
