@@ -34,10 +34,10 @@ From within Visual Studio:
 
  ## Usage
  ### Authenticating
- ```
+```
 var client = new JellyfinClient(uri, new UserAuthentication(clientName, deviceName, deviceId, applicationVersion));
 var authResponse = await Client.AuthenticateUserAsync(username, password);
- ```
+```
 
  ### Querying the catalog
  
@@ -48,5 +48,5 @@ JellyfinModel.ItemFilters filters = JellyfinModel.ItemFilters.Create()
                                     .Order(JellyfinModel.SortOrder.Ascending)
                                     .Take(25);
 
- var itemsResponse = await Client.GetItemsAsync(authResponse.User.Id.ToString(), filters);
- ```
+var itemsResponse = await Client.GetItemsAsync(authResponse.User.Id.ToString(), filters);
+```
