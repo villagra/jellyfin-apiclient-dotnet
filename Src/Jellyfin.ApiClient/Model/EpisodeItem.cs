@@ -16,6 +16,7 @@ namespace Jellyfin.ApiClient.Model
         public String Overview { get; set; }
         public long RunTimeTicks { get; set; }
         public String SeriesId { get; set; }
+        public String SeriesName { get; set; }
         public String SeasonId { get; set; }
         public String SeriesPrimaryImageTag { get; set; }
         public String[] ParentBackdropImageTags { get; set; }

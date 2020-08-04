@@ -91,6 +91,11 @@ namespace Jellyfin.ApiClient
             return await DoGet<BaseItem>($"Users/{userId}/Items/{itemId}");
         }
 
+        public async Task<QueryResult<BaseItem>> GetNextUpShowsAsync(ItemFilters filters)
+        {
+            return await DoGet<QueryResult<BaseItem>>($"/Shows/NextUp", filters);
+        }
+
         public async Task<QueryResult<SeasonItem>> GetSeasons(string userId, string showId)
         {
             ItemFilters filters = ItemFilters.Create().FilterByUserId(userId);
@@ -131,8 +136,7 @@ namespace Jellyfin.ApiClient
         {
             if (watched)
             {
-                //20200517081414
-                return await DoPost<UserItemDataDto>($"Users/{userId}/PlayedItems/{itemId}", new object());
+                return await DoPost<UserItemDataDto>($"Users/{userId}/PlayedItems/{itemId}?DatePlayed={DateTime.Now.ToString("yyyyMMddHHmmss")}", new object());
             }
             return await DoDelete<UserItemDataDto>($"Users/{userId}/PlayedItems/{itemId}");
         }
