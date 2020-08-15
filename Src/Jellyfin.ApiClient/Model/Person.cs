@@ -5,12 +5,13 @@ using System.Text;
 
 namespace Jellyfin.ApiClient.Model
 {
-    public class Person
+    public class Person : BaseItem
     {
-        public string Name { get; set; }
-        public string Id { get; set; }
         public string Role { get; set; }
         public string Type { get; set; }
+        public string Overview { get; set; }
+        public DateTime? PremiereDate { get; set; }
+        public string[] ProductionLocations { get; set; }
         public string PrimaryImageTag { get; set; }
     }
 }

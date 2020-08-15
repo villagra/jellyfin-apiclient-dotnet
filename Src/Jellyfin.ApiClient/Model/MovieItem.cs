@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Jellyfin.ApiClient.Model
 {
-    public class MovieItem : BaseItem
+    public class MovieItem : ExtendedBaseItem
     {
         public Boolean HasSubtitles { get; set; }        
         public DateTime PremiereDate { get; set; }

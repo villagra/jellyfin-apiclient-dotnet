@@ -31,7 +31,7 @@ namespace Jellyfin.ApiClient
         protected ILogger Logger { get; private set; }
         protected HttpClient Client { get; private set; }
         protected Uri ServerAddress { get; private set; }
-        protected UserDto CurrentUser { get; private set; }
+        protected User CurrentUser { get; private set; }
         protected String AccessToken { get; private set; }
 
 
@@ -58,7 +58,7 @@ namespace Jellyfin.ApiClient
             Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }        
 
-        protected void SetAuthenticationInfo(UserDto currentUser, String accessToken)
+        protected void SetAuthenticationInfo(User currentUser, String accessToken)
         {
             this.CurrentUser = currentUser;
             this.AccessToken = accessToken;

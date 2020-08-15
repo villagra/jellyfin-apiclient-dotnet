@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Jellyfin.ApiClient.Model
 {
-    public class EpisodeItem : BaseItem
+    public class EpisodeItem : ExtendedBaseItem
     {
         public int IndexNumber { get; set; }
         public int ParentIndexNumber { get; set; }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Jellyfin.ApiClient.Model
 {
-    public class SeriesItem : BaseItem
+    public class SeriesItem : ExtendedBaseItem
     {
         public string Overview { get; set; }
 

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Jellyfin.ApiClient.Model
 {
-    public class CollectionFolderItem : BaseItem
+    public class CollectionFolderItem : ExtendedBaseItem
     { 
         public string Etag { get; set; }
         public DateTime DateCreated { get; set; }
