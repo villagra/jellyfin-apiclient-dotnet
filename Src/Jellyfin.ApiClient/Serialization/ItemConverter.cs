@@ -47,6 +47,9 @@ namespace Jellyfin.ApiClient.Serialization
                 case "MusicAlbum":
                     obj = new MusicAlbumItem();
                     break;
+                case "BoxSet":
+                    obj = new BoxSetItem();
+                    break;
                 case "Actor":
                 case "Director":
                 case "Writer":
